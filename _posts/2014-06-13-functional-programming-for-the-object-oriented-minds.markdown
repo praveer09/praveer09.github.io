@@ -10,15 +10,26 @@ To add new posts, simply add a file in the `_posts` directory that follows the c
 
 Jekyll also offers powerful support for code snippets:
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight java %}
+public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
+  List<Product> filteredProducts = new ArrayList<>();
+  for (Product product : products) {
+    if (product.getPrice() < 200) filteredProducts.add(product);
+  }
+  return filteredProducts;
+}
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+
+{% highlight java %}
+public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
+  return products
+          .stream()
+            .filter(product -> product.getPrice() < 200)
+            .collect(Collectors.toList());
+}
+{% endhighlight %}
 
 [jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll]:    http://jekyllrb.com
