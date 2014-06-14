@@ -13,10 +13,12 @@ share my understanding of functional programming and how it can help improving i
 
 ## Current style of writing code
 
-I will begin with an example 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
+I will begin with an example. Although the example has been made simple enough to reflect clearly the idea being 
+discussed, yet it covers most of the tasks a programmer comes across on a normal work day. Also I have selected the 
+language as __Java__ but this is applicable to any other language.
 
+Suppose you have to implement a functionality ___to filter from a list of products that have price less than 200___. 
+ 
 {% highlight java %}
 public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
   List<Product> filteredProducts = new ArrayList<>();
@@ -26,6 +28,19 @@ public List<Product> findProductsWithPriceLessThan200(final List<Product> produc
   return filteredProducts;
 }
 {% endhighlight %}
+
+On careful observation of the above code, we can see that the following has been done:
+
+1. Initializing a list `filteredProducts` to hold the products satisfying the criteria
+2. Creating a loop to iterate over the list of products
+3. Apply the filtering criteria
+4. Adding the products passing the criteria to the filtered list
+5. Returning the filtered list
+
+Firstly, the above mentioned steps of _initializing a list_, _looping_ and _adding to a list_ are a set of instructions 
+given to the computer to solve the problem at hand. Clearly we see that the focus has been shifted from 
+___what to do___ to ___how to do___. Secondly, the ___mutable variable___ `filteredProducts` can cause problems when 
+the complexity of the code increases. Such style of coding is called imperative or declarative programming. 
 
 ## The functional way of writing code
 
@@ -39,5 +54,6 @@ public List<Product> findProductsWithPriceLessThan200(final List<Product> produc
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+
 [jekyll-gh]: https://github.com/jekyll/jekyll
 [jekyll]:    http://jekyllrb.com
