@@ -40,9 +40,11 @@ On careful observation of the above code, we can see that the following has been
 Firstly, the above mentioned steps of _initializing a list_, _looping_ and _adding to a list_ are a set of instructions 
 given to the computer to solve the problem at hand. Clearly we see that the focus has been shifted from 
 ___what to do___ to ___how to do___. Secondly, the ___mutable variable___ `filteredProducts` can cause problems when 
-the complexity of the code increases. Such style of coding is called imperative or declarative programming. 
+the complexity of the code increases. Such style of coding is called __imperative__ or __declarative programming__. 
 
 ## The functional way of writing code
+
+Now let's see how we can implement the functionality using functional programming paradigm. 
 
 {% highlight java %}
 public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
@@ -53,7 +55,6 @@ public List<Product> findProductsWithPriceLessThan200(final List<Product> produc
 }
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
 
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll]:    http://jekyllrb.com
+
+## Summary
