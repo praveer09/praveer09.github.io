@@ -1,9 +1,10 @@
 # Site settings
 title: Praveer's Musings
 email: praveer09@gmail.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "This is a place where I share my learnings"
 baseurl: ""
 url: "http://praveer09.github.io"
+username: praveer09
 
 # Build settings
 markdown: kramdown
