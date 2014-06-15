@@ -2,14 +2,14 @@
 layout: post
 title:  "Functional Programming for the Object Oriented Minds"
 date:   2014-06-13 21:00:00
-categories: jekyll update
+categories: technology
 ---
 
 If you are one of those who build software solutions for everyday business problems, there is a high chance that you
-might be using an object oriented language to build high quality and maintainable software. Like me, you would also 
-explore new ways to continuously improve in building software. Lately with most of the languages supporting the 
+might be using an object oriented language to build high quality and maintainable software. Like me, you might also be
+exploring new ways to continuously improve in building software. Lately with most of the languages supporting the 
 programming paradigm of functional programming, it is being talked about a lot. In this article I make an attempt to 
-share my understanding of functional programming and how it can help improving in our daily work.
+share my understanding of functional programming and how it can help in improving your daily work.
 
 ## Current style of writing code
 
@@ -44,7 +44,7 @@ the complexity of the code increases. Such style of coding is called __imperativ
 
 ## The functional way of writing code
 
-Now let's see how we can implement the functionality using functional programming paradigm. 
+Now let's see how we can implement the functionality using functional programming paradigm. This is possible in Java 8.
 
 {% highlight java %}
 public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
@@ -55,6 +55,19 @@ public List<Product> findProductsWithPriceLessThan200(final List<Product> produc
 }
 {% endhighlight %}
 
+Again on careful observation of the above code, we can see that the following has been done:
 
+1. Create a stream
+2. Apply the filtering criteria
+3. Return the collected products that satisfied the filter
+
+You might have noticed that in this form of implementation the focus is on ___what to do___. The ___how to do___ part 
+is taken care of by the language platform. This also gives a chance to the language platform to perform optimizaitons. 
+For example the streams are lazy, which means that computations on source elements are done only when necessary. 
+Moreover we can see that we could also do away with the ___mutability___, thus reducing the chances of errors due to it.
 
 ## Summary
+Thus we can see that using the functional programming paradigm we get to focus on ___what to do___ which, we as 
+software solution builders should do. Though I showcased only a few benefits of thinking or practicing functional 
+programming among umpteen of them, I think I was able to generate your interest towards considering functional 
+programming as an addition to your daily job.
