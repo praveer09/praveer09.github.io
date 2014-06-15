@@ -4,8 +4,7 @@ title: About Me
 permalink: /about-me/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I am technology enthusiast. My other interests are music, photography and driving. I love exploring new 
+things and traveling.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+You can find more about me on my [linkedin profile](http://in.linkedin.com/pub/praveer-gupta/a/159/550).
