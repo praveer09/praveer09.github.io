@@ -2,6 +2,7 @@
 layout: post
 title:  "Functional Programming for the Object Oriented Minds"
 date:   2014-06-13 21:00:00
+comments: true
 categories: technology
 ---
 
