@@ -37,7 +37,7 @@ Most of the times the life of a developer is not easy. There are deadlines that 
 pressure you may forget to add that null check `if (order == null)`. And then you may see the dreaded 
 `NullPointerException` when: 
 
-* you run your unit tests (give a pat on you back for [writing unit tests][TDD]), or 
+* you run your unit tests (give a pat on your back for [writing unit tests][TDD]), or 
 * your code is being [tested by a QA][QA] (thank the QA for catching the bug in code), or 
 * in the worst case when your code is running in production.
 
