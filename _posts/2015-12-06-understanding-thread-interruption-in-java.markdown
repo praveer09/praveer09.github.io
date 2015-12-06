@@ -102,10 +102,10 @@ task and `awaitTermination()` method waits for the service to shutdown.
 {% highlight java %}
 public static void main(String[] args) throws InterruptedException {
     ExecutorService executor = Executors.newSingleThreadExecutor();
-    executor.submit(taskThatFinishesEarlyOnInterruption());  // item 3
-    Thread.sleep(3_000);                                     // item 4
-    executor.shutdownNow();                                  // item 5
-    executor.awaitTermination(1, TimeUnit.SECONDS);          // item 6
+    executor.submit(taskThatFinishesEarlyOnInterruption());  // requirement 3
+    Thread.sleep(3_000);                                     // requirement 4
+    executor.shutdownNow();                                  // requirement 5
+    executor.awaitTermination(1, TimeUnit.SECONDS);          // requirement 6
 }
 
 // implementation of taskThatFinishesEarlyOnInterruption() remains the same
