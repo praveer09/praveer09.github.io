@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Testing REST APIs with REST-assured"
-date:   2016-02-07 01:00:00 -0530
+date:   2016-02-06 12:00:00
 comments: true
 categories: technology
 ---
