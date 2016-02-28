@@ -110,7 +110,9 @@ blog posts in this series.
 
 ## Summary
 There are many methods that are provided by the RxJava library for Observable creation. Using the mental map of 
- scenarios can help in deciding which method to use in a particular scenario.
+scenarios can help in deciding which method to use in a particular scenario.
+ 
+[RxJava - Part 3 - Multithreading][Part3]
 
 [Observable]: http://reactivex.io/RxJava/javadoc/rx/Observable.html
 [RxJava]: https://github.com/ReactiveX/RxJava
@@ -145,3 +147,4 @@ There are many methods that are provided by the RxJava library for Observable cr
 [timer]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#timer(long,%20java.util.concurrent.TimeUnit)
 [interval]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#interval(long,%20java.util.concurrent.TimeUnit)
 [range]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#range(int,%20int)
+[Part3]: http://praveer09.github.io/technology/2016/02/29/rxjava-part-3-multithreading/

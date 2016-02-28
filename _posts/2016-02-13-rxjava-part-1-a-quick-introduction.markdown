@@ -106,7 +106,10 @@ with RxJava][CodeSample].
 
 In upcoming blog posts I will be explaining concepts around concurrency, composition and resilience in context of RxJava.
  
+[RxJava - Part 2 - Creating an Observable][Part2] 
+ 
 [RxJava]: https://github.com/ReactiveX/RxJava
 [CodeSample]: https://github.com/praveer09/rxjava-examples
 [ObservableCreation]: https://github.com/ReactiveX/RxJava/wiki/Creating-Observables
 [ReactiveProgramming]: https://en.wikipedia.org/wiki/Reactive_programming
+[Part2]: http://praveer09.github.io/technology/2016/02/21/rxjava-part-2-creating-an-observable/
