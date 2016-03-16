@@ -68,9 +68,7 @@ Lets define a Builder for the Apple now.
 
 {% highlight java %}
 data class AppleBuilder(val ripeness: Double = 0.0, val leaves: Int = 1) {
-    fun build(): Apple {
-        return Apple(leaves).apply { ripen(ripeness) }
-    }
+    fun build() = Apple(leaves).apply { ripen(ripeness) }
 }
 {% endhighlight %}
 
