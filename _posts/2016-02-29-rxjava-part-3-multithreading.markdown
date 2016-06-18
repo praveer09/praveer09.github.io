@@ -31,7 +31,7 @@ From the code sample below the default behaviour becomes evident. Notice the nam
 the three, the Observable, the Operator and the Subscriber get executed on the main thread. Hence we can say that 
 __by default the execution of RxJava is blocking__. 
 
-{% highlight java %}
+```java
 public static void main(String[] args) {
     Observable.fromCallable(thatReturnsNumberOne())     // the Observable
             .map(numberToString())                      // the Operator
@@ -68,7 +68,7 @@ private Action1<String> printResult() {
         System.out.println("Result: " + result);
     };
 }
-{% endhighlight %}
+```
 
 ## Scheduler
 [Scheduler][Scheduler] in RxJava defines the thread on which a unit of work will be performed. RxJava provides 
@@ -93,7 +93,7 @@ Observable computation can be executed only on one thread.
 This is because the computation as part of Observable gets executed only when the `subscribe()` method is called on 
 the Observable.
 
-{% highlight java %}
+```java
 public static void main(String[] args) {
     Observable.fromCallable(thatReturnsNumberOne())
             .subscribeOn(Schedulers.newThread())    // <<<<
@@ -108,7 +108,7 @@ public static void main(String[] args) {
     Subscriber thread: RxNewThreadScheduler-1
     Result: 1
 */
-{% endhighlight %}
+```
 
 ## Changing execution thread using ObserveOn
 The `observeOn` method tells RxJava library to perform the computation, as part of Operator or Subscriber declared 
@@ -124,7 +124,7 @@ observing events/data, transmits them to subsequent Operators, if any, or transm
 
 Below are code samples for the usage of observeOn. Notice the names of the threads printed in the output. 
 
-{% highlight java %}
+```java
 public static void main(String[] args) {
     Observable.fromCallable(thatReturnsNumberOne())
             .map(numberToString())
@@ -170,7 +170,7 @@ public static void main(String[] args) {
     Subscriber thread: RxNewThreadScheduler-1
     Result: 1
 */
-{% endhighlight %}
+```
 
 ## Summary
 RxJava makes it very easy to write multithreaded code using simple declarations as part of `subscribeOn` and 
