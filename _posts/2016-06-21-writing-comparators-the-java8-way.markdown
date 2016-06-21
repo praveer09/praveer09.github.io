@@ -7,7 +7,7 @@ categories: technology
 ---
 
 Java 8 introduced a few default methods and static factory methods on the [Comparator interface][ComparatorInterface] 
-that allow developers to write Comparators in a declarative way. The Comparator interface combines the principles from 
+using which developers can write Comparators in a declarative way. The Comparator interface combines the principles from 
 [Builder Pattern][Builder], [Factory Method Pattern][FactoryMethod], [Decorator Pattern][Decorator] and 
 [Functional Programming][Functional] to come up with a very expressive API.  
 
