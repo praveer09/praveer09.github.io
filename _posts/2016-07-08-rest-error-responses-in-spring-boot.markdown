@@ -112,7 +112,7 @@ This is done through the `errors` key in the JSON response.
         }
     ],
     "message": "Validation failed for object='someRequest'. Error count: 1",
-    "path": "/"
+    "path": "/some-resource"
 }
 ```
 
