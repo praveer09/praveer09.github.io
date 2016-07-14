@@ -157,7 +157,7 @@ public T orElse(T other) {
 }
 ```
 
-We saw above the Optional is a monad that decorates each computation with a null value check. Similarly there are 
+We saw above that Optional is a monad that decorates each computation with a null value check. Similarly there are 
 monads for decorating computations with other functionalities like error handling (try-catch), etc. 
 
 ## Summary
