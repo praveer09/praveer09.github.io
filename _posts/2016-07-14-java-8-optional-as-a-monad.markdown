@@ -13,8 +13,8 @@ object oriented styles in my code has enabled me to write code that is both easy
 
 In this article I will show the following:
 
-- How Java 8's [`Optional`][Optional] can be used to write code in a functional way and   
-- Understand Monads using Optional as an example and how it helps build robustness into the code
+- How Java 8's [`Optional`][Optional] can be used to write code in a functional way.   
+- Understand Monads using Optional as an example and how it can be used to bring robustness into the code.
 
 Code sample for this article can be found at [this link][CodeSample]. As a part of my exploration of functional 
 programming, I have been reading [Functional Programming in JavaScript][book], by [Luis Atencio][author]. I have 
@@ -25,10 +25,10 @@ Let's try to understand the concepts using an example. Let's say you have to wri
 current location of an order based on it's order id. While writing the program, the following conditions 
 should be kept in mind:
 
-- To be able to tell the current location of an order, it should have a tracking id
-- If location information cannot be found then return "No location found"
+- An order should have a tracking id for us to be able to tell the current location.
+- If location information cannot be found then return *No location found*.
 
-To be able to write the implementation we will be using the following domain models and services.
+We will be using the following domain models and services when writing the implementation for the logic mentioned above.
 
 ```java
 class Order {
@@ -133,7 +133,7 @@ public static <T> Optional<T> ofNullable(T value) {
 
 The computations as part of arguments of methods [`map`][map] and [`filter`][filter] on the Optional are performed only 
 when the underlying value is not null i.e. when the Optional object is not empty. The below is taken from the Java source code 
-for [`filter`][filter] method. Note the predicate passed to filter is evaluated only when Optional is not empty i.e. value is 
+for `filter` method. Note the predicate passed to filter is evaluated only when Optional is not empty i.e. value is 
 present. Also the return type is again `Optional` so that further chaining can be done.
 
 ```java
@@ -147,7 +147,7 @@ public Optional<T> filter(Predicate<? super T> predicate) {
 
 ```
 
-`orElse` returns the *No location found* only when the instance of Optional, upon which the method is called, is empty.
+[`orElse`][orElse] returns the *No location found* only when the instance of Optional, upon which the method is called, is empty.
 The below is taken from the Java source code for `orElse`. If the values contained within is not null, then the actual value 
 is passed back. 
 
@@ -161,10 +161,11 @@ We saw above the Optional is a monad that decorates each computation with a null
 monads for decorating computations with other functionalities like error handling (try-catch), etc. 
 
 ## Summary
-I hope I was able to show how introducing functional programming concepts into your code can increase the clarity and 
-comprehension. Writing functional programs may not be immediately intuitive however with practice and learning the functional 
-programming vocabulary you will be able to improve your code. Using Monads in your code help you in writing robust code 
-while preserving the declarative coding style.
+I hope I was able to show how using Monads in your code can help you in writing robust code while preserving the 
+declarative coding style. I also showed how Java 8's Optional is also a Monad. We saw how introducing functional 
+programming concepts into your code can increase the code's clarity and comprehension. Writing functional programs may 
+not be immediately intuitive however with practice and learning the functional programming vocabulary you will 
+be able make your code more expressive.
 
 
 [CodeSample]: https://github.com/praveer09/optional-as-monad/blob/master/src/main/java/monad/Implementation.java
