@@ -93,7 +93,7 @@ The following points are worth noting for the code implementation shown below:
 - None of the interfaces and domain objects had to be changed to be able to write the below code.
 
 ```java
-String monadicGetCurrentLocationOfOrderWithId(String orderId) {
+String getCurrentLocationOfOrderWithId(String orderId) {
     return Optional.ofNullable(orderId)
         .map(orderService::findOrderByOrderId)
         .filter(Order::hasTrackingId)
