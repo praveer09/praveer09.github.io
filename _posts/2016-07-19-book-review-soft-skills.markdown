@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Book Review - Soft Skills: The software developer's life manual"
-date:   2016-07-14 21:30:00 +05:30
+date:   2016-07-19 16:00:00 +05:30
 comments: true
 categories: book-review
 ---
