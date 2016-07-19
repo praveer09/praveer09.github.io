@@ -26,7 +26,6 @@ I will be mentioning those quotes against each section.
 > The driving force of a career must come from the individual.Remember: Jobs are owned by the company, 
 > you own your career! - Earl Nightingale
 
-Excerpt From: John Z. Sonmez. “Soft Skills: The software developer's life manual.” iBooks. 
 - I understood the difference between an employee, an independent consultant and entrepreneur and helped me assess if I 
 am on the correct path.
 - I got an answer to whether I should be **a specialist or a generalist**.
