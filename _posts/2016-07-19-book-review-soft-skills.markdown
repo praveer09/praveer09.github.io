@@ -48,7 +48,7 @@ am on the correct path.
 
 ### Productivity
 > Amateurs sit and wait for inspiration, the rest of us just get up and go to work. - Stephen King, On 
-> Writing: A Memoir of the Craft”
+> Writing: A Memoir of the Craft
 
 This is one section that gave me a lot of knowledge how to manage my time and become more productive. Some things 
 that I learnt are:
@@ -69,7 +69,7 @@ real estate.
 > The human body is the best picture of the human soul. - Ludwig Wittgenstein
 
 Those who know me may understand how much this section would have helped me. 
-- One of the best lessons I learnt was how to **make exercise fun**. An example that I am taking from the book is that if you 
+- One of the best lessons I learnt was how to **make exercises fun**. An example that I am taking from the book is that if you 
 love to read books, then you can combine it with your running by listening to an audiobook while running. 
 - I learnt some food hacks that will satisfy your stomach when it wants the most but without adding anything to your belly. 
 
