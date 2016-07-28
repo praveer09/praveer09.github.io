@@ -225,7 +225,7 @@ public static <T> CompletableFuture<T> failAfter(Duration duration) {
 
 ## Summary
 I hope that after reading this blog you will agree with me that asynchronous programming brings benefits when we want to 
-acheive faster response times. I also hope that after seeing the recipes you will agree that *CompletableFuture* has made 
+achieve faster response times. I also hope that after seeing the recipes you will agree that *CompletableFuture* has made 
 it easy to write asynchronous code in Java. It provides a rich set of methods for defining flows. I assure you that this 
 will definitely be a good addition to your technology tool kit. 
 
