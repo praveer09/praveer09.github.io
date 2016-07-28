@@ -104,7 +104,7 @@ class SomeSyncServiceImpl implements SomeSyncService {
 Let's convert this to asynchronous using *CompletableFuture*. Note the use of `supplyAsync` method. *CompletableFuture* 
 will execute the task passed to *supplyAsync* in a separate thread provided by *ForkJoinPool*. This method will also take care 
 to populate the container with the computed value if processing completes successfully. It will populate with the 
-error if any *RuntimeException* occurrs during execution. We will see later how to handle success or failure responses. 
+error if any *RuntimeException* occurs during execution. We will see later how to handle success or failure responses. 
 
 ```java
 interface SomeAsyncService {
