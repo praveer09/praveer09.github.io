@@ -201,7 +201,7 @@ I will mention here a summary for this recipe.
 
 Suppose you want to add a timeout of 30 seconds to the example shown in the previous section. In the example below: 
 
-* Notice the use of `applyToEither` method on the *CompletableFuture* to acheive the timeout. It waits asynchronously 
+* Notice the use of `applyToEither` method on the *CompletableFuture* to achieve the timeout. It waits asynchronously 
 for either of the two futures to complete first.
 * When either of the *futureA* or *timeout* completes, the value from it is transferred to subsequent computations 
 using `Function.identity()`.
