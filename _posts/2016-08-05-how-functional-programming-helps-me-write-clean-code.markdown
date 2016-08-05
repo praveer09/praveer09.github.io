@@ -95,7 +95,7 @@ code. This is known as [DRY][dry] principle. Functional programming provides tec
 In the previous snippet, the *filter* method takes a function, which accepts any type of value but returns a boolean. Such 
 functions are called predicates. A function which takes another function as an argument is called a *higher order function*. 
 The important thing to note is that the filter is defined once and the behaviour changes based on the predicate provided 
-to the filter method. This is the kind of reusablity provided by higher order functions. 
+to the filter method. This is the kind of reusability provided by higher order functions. 
 
 #### Partial Functions
 Sometimes you have functions which take more than one argument. By applying a different set of arguments you can derive 
