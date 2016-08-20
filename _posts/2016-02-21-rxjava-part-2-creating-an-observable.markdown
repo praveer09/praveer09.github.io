@@ -112,7 +112,14 @@ blog posts in this series.
 There are many methods that are provided by the RxJava library for Observable creation. Using the mental map of 
 scenarios can help in deciding which method to use in a particular scenario.
  
-[RxJava - Part 3 - Multithreading][Part3]
+Next post in this series - [RxJava - Part 3 - Multithreading][Part3]
+
+--- 
+_Update: In May 2016, I had done a talk on RxJava, where I had explained on how to think in RxJava. As this was an introductory 
+talk on RxJava, it serves as a good addition to this blog post._  
+
+<iframe src="https://player.vimeo.com/video/170796165" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+[GeeCON 2016: Praveer Gupta - How to Think, in RxJava, Before Reacting](https://vimeo.com/170796165) from [GeeCON Conference](https://vimeo.com/geecon) on Vimeo.
 
 [Observable]: http://reactivex.io/RxJava/javadoc/rx/Observable.html
 [RxJava]: https://github.com/ReactiveX/RxJava
@@ -147,4 +154,4 @@ scenarios can help in deciding which method to use in a particular scenario.
 [timer]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#timer(long,%20java.util.concurrent.TimeUnit)
 [interval]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#interval(long,%20java.util.concurrent.TimeUnit)
 [range]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#range(int,%20int)
-[Part3]: http://praveer09.github.io/technology/2016/02/29/rxjava-part-3-multithreading/
+[Part3]: {% post_url 2016-02-29-rxjava-part-3-multithreading %}

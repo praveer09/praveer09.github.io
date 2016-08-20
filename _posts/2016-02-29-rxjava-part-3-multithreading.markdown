@@ -177,6 +177,13 @@ RxJava makes it very easy to write multithreaded code using simple declarations 
 `observerOn` in combination with `Scheduler`. If none of these threading utilities are declared then RxJava is 
 by default blocking i.e. the computation gets done on the same thread where the declaration is done. 
 
+--- 
+_Update: In May 2016, I had done a talk on RxJava, where I had explained on how to think in RxJava. As this was an introductory 
+talk on RxJava, it serves as a good addition to this blog post._  
+
+<iframe src="https://player.vimeo.com/video/170796165" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+[GeeCON 2016: Praveer Gupta - How to Think, in RxJava, Before Reacting](https://vimeo.com/170796165) from [GeeCON Conference](https://vimeo.com/geecon) on Vimeo.
+
 [RxJava]: https://github.com/ReactiveX/RxJava
 [Scheduler]: http://reactivex.io/documentation/scheduler.html
 [subscribeOn]: http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribeOn(rx.Scheduler)

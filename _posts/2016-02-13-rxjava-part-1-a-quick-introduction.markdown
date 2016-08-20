@@ -104,12 +104,18 @@ RxJava starts pushing the data received from the Observable onto the Subscriber.
 enough to get you started with RxJava. [I have created a repository here which you can use to experiment 
 with RxJava][CodeSample].
 
-In upcoming blog posts I will be explaining concepts around concurrency, composition and resilience in context of RxJava.
- 
-[RxJava - Part 2 - Creating an Observable][Part2] 
+In upcoming blog posts I will be explaining concepts around concurrency, composition and resilience in context of RxJava. 
+Next post in this series - [RxJava - Part 2 - Creating an Observable][Part2] 
+
+--- 
+_Update: In May 2016, I had done a talk on RxJava, where I had explained on how to think in RxJava. As this was an introductory 
+talk on RxJava, it serves as a good addition to this blog post._  
+
+<iframe src="https://player.vimeo.com/video/170796165" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+[GeeCON 2016: Praveer Gupta - How to Think, in RxJava, Before Reacting](https://vimeo.com/170796165) from [GeeCON Conference](https://vimeo.com/geecon) on Vimeo.
  
 [RxJava]: https://github.com/ReactiveX/RxJava
 [CodeSample]: https://github.com/praveer09/rxjava-examples
 [ObservableCreation]: https://github.com/ReactiveX/RxJava/wiki/Creating-Observables
 [ReactiveProgramming]: https://en.wikipedia.org/wiki/Reactive_programming
-[Part2]: http://praveer09.github.io/technology/2016/02/21/rxjava-part-2-creating-an-observable/
+[Part2]: {% post_url 2016-02-21-rxjava-part-2-creating-an-observable %}
