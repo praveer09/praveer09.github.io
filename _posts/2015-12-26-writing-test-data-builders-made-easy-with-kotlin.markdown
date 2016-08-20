@@ -10,6 +10,7 @@ In this article I will be focusing on few features of [Kotlin][KotlinLang] that 
 concise and readable code__. To explain the features, I will be using the concept of Test Data Builders, 
 as described in the book [Growing Object-Oriented Software, Guided by Tests][TDDBook]. I hope that by the end of 
 this article I will have generated enough interest in you to try out Kotlin. 
+
 If you are not aware, Kotlin, developed by [JetBrains][JetBrains], is a statically 
 typed programming language for the JVM. It is fully interoperable with Java (i.e. Kotlin code can be 
 called from Java and vice versa). 

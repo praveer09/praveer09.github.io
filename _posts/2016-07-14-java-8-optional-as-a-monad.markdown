@@ -6,8 +6,8 @@ comments: true
 categories: technology
 ---
 
-Lately there has been a lot of discussions around functional programming and object oriented programming 
-and their differences. A few functional programming constructs had also been introduced in Java 8 release couple of years back. 
+Lately there has been lot of discussions around functional programming and object oriented programming 
+and their differences. A few functional programming constructs had also been introduced in Java 8 release a couple of years back. 
 Since then I have been exploring functional programming and I have realized that using a mix of both functional and 
 object oriented styles in my code has enabled me to write code that is both easy to read and easy to explain.   
 

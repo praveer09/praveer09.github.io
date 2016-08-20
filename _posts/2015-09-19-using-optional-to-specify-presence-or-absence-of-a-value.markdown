@@ -6,6 +6,9 @@ comments: true
 categories: technology
 ---
 
+Java 8 introduced Optional which serves as a container for values abstracting out the presence or absence of values. 
+In this article I will be showing how using it helps in writing null safe code.
+
 Let's say you have to use an interface to write some logic and you see the below interface definition. 
 
 {% highlight java %} 

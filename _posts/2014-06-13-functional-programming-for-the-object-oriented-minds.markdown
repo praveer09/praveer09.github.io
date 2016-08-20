@@ -6,11 +6,14 @@ comments: true
 categories: technology
 ---
 
+In this article I make an attempt to share my understanding of functional programming and how it can help in improving 
+your daily work.
+
 If you are one of those who build software solutions for everyday business problems, there is a high chance that you
 might be using an object oriented language to build high quality and maintainable software. Like me, you might also be
 exploring new ways to continuously improve yourself in building software. Lately with most of the languages supporting 
-the programming paradigm of functional programming, it is being talked about a lot. In this article I make an attempt 
-to share my understanding of functional programming and how it can help in improving your daily work.
+the programming paradigm of functional programming, it is being talked about a lot. Let's see how it helps in writing 
+better code. 
 
 ## Current style of writing code
 

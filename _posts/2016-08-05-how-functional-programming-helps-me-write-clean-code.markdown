@@ -7,12 +7,14 @@ categories: technology
 ---
 
 I have been writing code for several years now. One thing that I have realized is that I have spent much more 
-time in reading code than writing code. Hence, as a part of continuous improvement, I invest a lot of time in learning new techniques to 
-write clean code. By clean code I mean, code that is easy to read and easy to reason about. Till now, I have mostly written code 
-using object oriented programming techniques. Lately I have been learning functional programming techniques. 
-These techniques, when mixed the techniques from object oriented style, have helped me a great deal in writing 
-cleaner code. In this article, I will be showing what improvements can been brought into code by using these 
-techniques. Also I will be providing a small explanation for each of the techniques shown. 
+time in reading code than writing code. Hence, as a part of continuous improvement, I invest a lot of time in 
+learning new techniques to write clean code. By clean code I mean, code that is easy to read and easy to reason 
+about. 
+
+Till now, I have mostly written code using object oriented programming techniques. Lately I have been learning 
+functional programming techniques. These techniques, when mixed the techniques from object oriented style, have 
+helped me a great deal in writing cleaner code. In this article, I will be showing what improvements can been brought 
+into code by using these techniques. Also I will be providing a small explanation for each of the techniques shown. 
 
 > Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. 
 > - John Woods

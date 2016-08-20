@@ -9,8 +9,10 @@ categories: technology
 Java 8, among other changes, had introduced [`CompletableFuture`][Cf] which has made writing asynchronous programs in Java easy. 
 In this article I will be using *CompletableFuture* to explain how asynchronous programs are written and what value 
 asynchronous programs bring in the context of backend services' response times. I will also be covering different 
-features of the *CompletableFuture* itself. Though the concepts explained here use Java as an example, it can be applied 
-in any other language. In fact *CompletableFutures* are similar to [*Promises*][Promise] in JavaScript. 
+features of the *CompletableFuture* itself. 
+
+Though the concepts explained here use Java as an example, it can be applied in any other language. In fact 
+*CompletableFutures* are similar to [*Promises*][Promise] in JavaScript. 
 
 The content in this article is organized as below:
 

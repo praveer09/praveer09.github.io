@@ -8,8 +8,9 @@ categories: technology
 
 You may come across use cases where you would need to perform some long running tasks on separate threads. 
 You may have to request these tasks to finish doing their work, may be even before the tasks are completely 
-done, so that the threads they would be running on can be stopped. Few examples where you may have to finish 
-tasks early and stop threads are:
+done, so that the threads they would be running on can be stopped. 
+
+Few examples where you may have to finish tasks early and stop threads are:
  
 * While servicing a web request you may distribute the processing to multiple threads and some or all of 
 the tasks fail to finish the processing within specified request processing time, or 
