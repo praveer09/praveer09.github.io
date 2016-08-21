@@ -2,6 +2,7 @@
 layout: page
 title: About Me
 permalink: /about-me/
+tags: about
 ---
 
 I am technology enthusiast. My other interests are music, photography and driving. I love exploring new 
