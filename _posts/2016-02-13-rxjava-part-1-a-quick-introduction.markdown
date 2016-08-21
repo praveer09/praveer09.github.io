@@ -111,7 +111,8 @@ Next post in this series - [RxJava - Part 2 - Creating an Observable][Part2]
 _Update: In May 2016, I had done a talk on RxJava, where I had explained on how to think in RxJava. As this was an introductory 
 talk on RxJava, it serves as a good addition to this blog post._  
 
-<iframe src="https://player.vimeo.com/video/170796165" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+<div class='embed-container'><iframe src='https://player.vimeo.com/video/170796165' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
 [GeeCON 2016: Praveer Gupta - How to Think, in RxJava, Before Reacting](https://vimeo.com/170796165) from [GeeCON Conference](https://vimeo.com/geecon) on Vimeo.
  
 [RxJava]: https://github.com/ReactiveX/RxJava
