@@ -41,7 +41,7 @@ Let's understand each of the above mentioned points using an example code writte
 made the code verbose to highlight the details. In the end of this blog I have also provided a concise version of 
 the same code. 
   
-{% highlight java %}
+```java
 // defining the source
 Observable<Integer> source = Observable.range(1, 5);
 
@@ -59,7 +59,7 @@ Subscriber<Integer> consumer = new Subscriber<Integer>() {
 
 // connecting the consumer to source
 source.subscribe(consumer);
-{% endhighlight %}
+```
 
 #### Source of data
 In ATM example the machine along with the configured transaction details serves as the source. Similarly 
@@ -89,13 +89,14 @@ is subscribed to it. In the ATM example  pressing the done button after configur
 to the subscribing action. Till then no cash is dispensed by the machine.
 
 A concise version of above code written using Java 8 will be something like below.
-{% highlight java %}
+
+```java
 Observable.range(1, 5).subscribe(
     number -> System.out.println(number),
     error -> System.out.println("error"),
     () -> System.out.println("completed")
 );
-{% endhighlight %}
+```
 
 ## Summary
 We saw that when writing programs using RxJava we have to define an `Observable` and a `Subscriber` and then 

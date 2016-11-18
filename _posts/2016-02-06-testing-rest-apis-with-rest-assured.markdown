@@ -38,7 +38,7 @@ separation of concerns within a test, thus leading to a very readable test.
 ## REST API Testing in Action
 Let's assume that there is a REST API with the following documentation:
  
-{% highlight java %}  
+```
 PATHS  
 GET /people/{id}  
 
@@ -51,7 +51,7 @@ RESPONSES
 Code    Description         Schema  
 ----    -----------         ------  
 200     Person              {id: number, name: string}  
-{% endhighlight %}  
+```  
 
 An automated test for the REST API written using REST-assured will look like below. After reading the test 
 I think that you will agree with me that the test is easily readable and self-explanatory. Also note that the 
@@ -59,7 +59,7 @@ code is written in a declarative style, which means that I had to just specify t
 the library takes care of the mechanics of how the request is made, how the response is handled and how assertions 
 are made.
 
-{% highlight java %}  
+```java  
 ... // some imports hidden for brevity
 import static com.jayway.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
@@ -80,7 +80,7 @@ public class PersonApiTest {
             );
     }
 }  
-{% endhighlight %}  
+```  
 
 Though what I have showcased above is a very basic test for a REST API, the library with its DSL can very 
 easily handle the rising complexity of the tests. The reason for this is the availability of various 

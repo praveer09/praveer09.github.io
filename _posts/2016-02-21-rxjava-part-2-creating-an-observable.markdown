@@ -19,7 +19,7 @@ Think of Observable as an action which starts getting executed as soon as a [Sub
 During the execution of this action, data/events are generated and passed on to the subscriber. Let's try to understand 
 it by an example. I will be using [Observable.create()][Create] method to create an Observable. 
 
-{% highlight java %}
+```java
 // Note that below code is not optimal but it helps in demonstration of concepts
 // A better version is shown in the next section
 Observable.create(new Observable.OnSubscribe<String>() {
@@ -34,7 +34,7 @@ Observable.create(new Observable.OnSubscribe<String>() {
         }
     }
 });
-{% endhighlight %}
+```
 
 In the code above, the following are worth noticing: 
 
@@ -66,14 +66,14 @@ The code example which I have shown above emits only one value. We can replace i
 shown below. The emission of value to the subscriber using onNext and either onCompleted or onError is handled by 
 the library.
 
-{% highlight java %}
+```java
 Observable.fromCallable(new Callable<String>() {
     @Override
     public String call() throws Exception {
         return doSomeTimeTakingIoOperation();
     }
 });
-{% endhighlight %}
+```
 
 ### An Observable that emits multiple values during computation
 In few cases more than one value is passed to the Subscriber from the Observer. 
@@ -91,13 +91,13 @@ processed by collecting information from two external services which can be run 
 two parallel computations using two Observables and combine the results of each by using a method like 
 [Observable.concat()][Concat]. 
 
-There are many other methods which help in combining observables. They differences among them are in the  
+There are many other methods which help in combining observables. The differences among them are in the 
 way they combine the observables. [Observable.amb()][amb], [Observable.combineLatest()][combineLatest], 
 [Observable.merge()][merge] and [Observable.zip()][zip] are few that are very useful in combining observables.
 
 ### Some useful pre-defined Observables
 The RxJava library provides few methods for pre-defined Observables. One such method is [Observable.interval()][interval]. 
-This observable emits a sequential number every specified interval of time.  Other such methods are 
+This observable emits a sequential number every specified interval of time. Other such methods are 
 [Observable.empty()][empty], [Observable.never()][never], [Observable.error()][error], [Observable.just()][just],
 [Observable.from()][from], [Observable.timer()][timer] and [Observable.range()][range]. 
 

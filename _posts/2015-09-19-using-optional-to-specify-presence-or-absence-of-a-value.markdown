@@ -11,11 +11,11 @@ In this article I will be showing how using it helps in writing null safe code.
 
 Let's say you have to use an interface to write some logic and you see the below interface definition. 
 
-{% highlight java %} 
+```java 
 public interface OrderService {
   Order findOrderWithId(long orderId);
 }
-{% endhighlight %} 
+``` 
 
 What is the first thing that comes to your mind? Most probably it will be the question that, what happens if the 
 order against the requested order id does not exist. 
@@ -29,12 +29,12 @@ In any of the cases, the highest probability is that the interface will return a
 
 The client logic that you will write against such an interface will be something like:
 
-{% highlight java %} 
+```java 
 Order order = orderService.findOrderWithId(orderId);
 if (order == null) throw new OrderNotFoundException();
 order.getTotalAmount();
 ... // do further processing
-{% endhighlight %} 
+``` 
 
 Most of the times the life of a developer is not easy. There are deadlines that you have to meet and under delivery 
 pressure you may forget to add that null check `if (order == null)`. And then you may see the dreaded 
@@ -50,11 +50,11 @@ This is where `Optional` comes to rescue. It has been part of the [Google's Guav
 for long. It has also recently been included in [Java 8][Java8Optional]. Let's try to re-write the interface 
 using the Java 8's version of `Optional`.
 
-{% highlight java %}
+```java
 public interface OrderService {
   Optional<Order> findOrderWithId(long id);
 }
-{% endhighlight %}
+```
 
 Now if you use this interface to write some logic, you will observe that the return type itself is telling you that 
 it may or may not be present. ___The code itself has become the documentation___. As the return type is itself 
@@ -64,25 +64,26 @@ id becomes lesser.
 Let's see how a client code against such an interface will look like. The below code is intentionally made verbose 
 for the purpose of illustration. A more concise version will also follow.
 
-{% highlight java %} 
+```java 
 Optional<Order> orderOptional = orderService.findOrderWithId(orderId);
 if (!orderOptional.isPresent()) throw new OrderNotFoundException();
 Order order = orderOptional.get(); 
 order.getTotalAmount();
 ... // do further processing
-{% endhighlight %} 
+``` 
 
 Note that the client code against interface to call an `get()` on the `Optional` to get the object which also forces 
 the writer of client code to think about and handle the cases then value is not present. You can use `isPresent()` to 
 check the presence or absence of a value.
 
 A more concise version of the above code will be. 
-{% highlight java %} 
+
+```java 
 Order order = orderService.findOrderWithId(orderId)
     .orElseThrow(OrderNotFoundException::new);
 order.getTotalAmount();
 ... // do further processing
-{% endhighlight %} 
+``` 
 
 There are multiple factory methods like `Optional.of(T value)`, `Optional.ofNullable(T value)` and `Optional.empty()` 
 which can used on the producer side. On the consumer side instance methods like `get()`, `orElse(T other)`, 

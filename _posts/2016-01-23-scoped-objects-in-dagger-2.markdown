@@ -33,7 +33,8 @@ annotations are from the `javax.inject` package.
  
 #### Defining Custom Scopes
 The [Scope] annotation is used to define the scopes. 
-{% highlight java %}
+
+```java
 // objects marked with this will live for lifetime of application
 @Scope 
 public @interface ApplicationScoped {}
@@ -41,7 +42,7 @@ public @interface ApplicationScoped {}
 // objects marked with this will live for lifetime of a request
 @Scope 
 public @interface RequestScoped {}
-{% endhighlight %} 
+``` 
 
 #### Using Custom Scopes on Objects
 From the code sample below the following observations can be made:
@@ -52,7 +53,7 @@ with `@Module`).
 * `GreetingProvider` is `ApplicationScoped`. 
 * `Greeter` and `@Named("Visitor") String` are `RequestScoped`.
 
-{% highlight java %}
+```java
 @ApplicationScoped  // <<<<<<
 public class GreetingProvider {
     @Inject
@@ -87,7 +88,7 @@ public class GreeterModule {
     @Provides @RequestScoped @Named("Visitor")  // <<<<<<
     public String provideVisitor() { return visitor; }
 }
-{% endhighlight %}
+```
 
 ##### A Note on `@Inject`, `@Module` and `@Provides`
 * Annotating a constructor of an object with `@Inject` instructs Dagger to create that object and inject dependencies
@@ -138,7 +139,7 @@ is a ___parent-child relationship___ between ApplicationComponent and RequestCom
 be defined on ApplicationComponent even though it is being used in `Greeter`. ___The objects from parent scope are 
 visible to the child scope___. 
 
-{% highlight java %}
+```java
 @ApplicationScoped
 @Component
 public interface ApplicationComponent {
@@ -151,7 +152,7 @@ public interface ApplicationComponent {
 public interface RequestComponent {
     Greeter greeter();
 }
-{% endhighlight %}
+```
 
 #### Creating the Scoped Objects
 In the code sample below:
@@ -164,7 +165,7 @@ injected into the Controller. ___Components can also be injected into objects, b
 defined as that on the object___.
 * The `Controller` itself is created using `DaggerApplicationComponent` which Dagger has generated.
  
-{% highlight java %}
+```java
 @ApplicationScoped
 public class Controller {
     private final ApplicationComponent applicationComponent;
@@ -187,7 +188,7 @@ public class App {
         System.out.println(controller.handleRequest("Hello")); // prints Hello World!
     }
 }
-{% endhighlight %}
+```
 
 ### Component Dependencies
 Now we will see how the Scoped Objects are related using Component Dependencies and how they are created.
@@ -201,7 +202,7 @@ ApplicationComponent.
 * Also note that ApplicationComponent has to define `GreetingProvider` as it is used by `Greeter`. ___The objects 
 which are used in other related scopes have to be defined on the Component definition interface___.
 
-{% highlight java %}
+```java
 @ApplicationScoped
 @Component
 public interface ApplicationComponent {
@@ -216,7 +217,7 @@ public interface ApplicationComponent {
 public interface RequestComponent {
     Greeter greeter();
 }
-{% endhighlight %}
+```
 
 #### Creating the Scoped Objects
 In the code sample below:
@@ -230,7 +231,7 @@ building the RequestComponent. This is why
 ApplicationComponent has been injected into the Controller.
 * The `Controller` itself is created using `DaggerApplicationComponent` which Dagger has generated.
 
-{% highlight java %}
+```java
 @ApplicationScoped
 public class Controller {
     private final ApplicationComponent applicationComponent;
@@ -256,7 +257,7 @@ public class App {
         System.out.println(controller.handleRequest("Hello")); // prints Hello World!
     }
 }
-{% endhighlight %}
+```
 
 ## Summary
 Dagger has full support for defining the __Scoped Objects__. __Subcomponets__ and __Component Dependencies__ 

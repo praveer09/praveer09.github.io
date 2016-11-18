@@ -23,7 +23,7 @@ language as __Java__ but this is applicable to any other language.
 
 Suppose you have to implement a functionality ___to filter from a list of products that have price less than 200___. 
  
-{% highlight java %}
+```java
 public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
   List<Product> filteredProducts = new ArrayList<>();
   for (Product product : products) {
@@ -31,7 +31,7 @@ public List<Product> findProductsWithPriceLessThan200(final List<Product> produc
   }
   return filteredProducts;
 }
-{% endhighlight %}
+```
 
 On careful observation of the above code, we can see that the following has been done:
 
@@ -50,14 +50,14 @@ the complexity of the code increases.
 
 Now let's see how we can implement the functionality using functional programming paradigm. This is possible in Java 8.
 
-{% highlight java %}
+```java
 public List<Product> findProductsWithPriceLessThan200(final List<Product> products) {
   return products
           .stream()
             .filter(product -> product.getPrice() < 200)
             .collect(Collectors.toList());
 }
-{% endhighlight %}
+```
 
 Again on careful observation of the above code, we can see that the following has been done:
 

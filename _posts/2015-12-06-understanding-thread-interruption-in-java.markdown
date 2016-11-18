@@ -44,7 +44,7 @@ task will not be able to print all the ten numbers from 0 through 9.
 ## An implementation of the use case using Thread
 The inline comment against a line of code mentions the use case requirement that has been met by the line. 
  
-{% highlight java %}
+```java
 public static void main(String[] args) throws InterruptedException {
     Thread taskThread = new Thread(taskThatFinishesEarlyOnInterruption());
     taskThread.start();      // requirement 3
@@ -65,7 +65,7 @@ private static Runnable taskThatFinishesEarlyOnInterruption() {
         }
     };
 }
-{% endhighlight %} 
+``` 
 
 #### Understanding the implementation of Requirement 5
 In the implementation of requirement 5, the main thread calls the `taskThread`'s `interrupt()` method. ___In Java, 
@@ -100,7 +100,7 @@ separation of task execution from the thread management. In the implementation b
 task on the thread it holds. The service's `shutdownNow()` method interrupts the currently running 
 task and `awaitTermination()` method waits for the service to shutdown.
 
-{% highlight java %}
+```java
 public static void main(String[] args) throws InterruptedException {
     ExecutorService executor = Executors.newSingleThreadExecutor();
     executor.submit(taskThatFinishesEarlyOnInterruption());  // requirement 3
@@ -110,7 +110,7 @@ public static void main(String[] args) throws InterruptedException {
 }
 
 // implementation of taskThatFinishesEarlyOnInterruption() remains the same
-{% endhighlight %}
+```
 
 When using the Executor framework, you can interrupt a specific task without shutting down the 
 `ExecutorService`. On submitting a task to the service an instance of `Future<?>` is returned by 
@@ -120,11 +120,11 @@ and not shutting down the service helps in re-using the service across multiple 
 situations you may want to shutdown the service only on shutdown of your web application. Calling the 
 `cancel()` with `true` causes the task to be interrupted. 
 
-{% highlight java %}
+```java
 Future<?> submittedTask = executor.submit(someTask());
 ...
 submittedTask.cancel(true) // if conditions to cancel the task have been met
-{% endhighlight %}
+```
 
 The Executor framework is a complete asynchronous task execution framework. If you have not explored it 
 yet, I request to you to read about it. It will be a great addition to your development toolbox. 
@@ -146,7 +146,7 @@ by the call to `Thread.currentThread().interrupt()` during the first execution. 
 finishes early just after printing the first number. Not preserving the interruption status would have caused 
 the second execution of the method to run fully for 9 seconds.
 
-{% highlight java %}
+```java
 public static void main(String[] args) throws InterruptedException {
     ExecutorService executor = Executors.newSingleThreadExecutor();
     Future<?> future = executor.submit(() -> {
@@ -169,7 +169,7 @@ private static void printNumbers() {
         }
     }
 }
-{% endhighlight %}
+```
 
 
 ## Summary

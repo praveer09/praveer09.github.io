@@ -38,7 +38,7 @@ Before we look at one of these builders, lets see an example of an object for wh
 useful. This example has been taken from the documentation of [make-it-easy][MakeItEasy], a tiny framework that 
 makes it easy to write the Test Data Builders in Java.
 
-{% highlight java %}
+```java
 class Apple(private val leaves: Int) {
     private var ripeness = 0.0
 
@@ -50,7 +50,7 @@ class Apple(private val leaves: Int) {
     
     fun numberOfLeaves() = leaves
 }
-{% endhighlight %} 
+``` 
 
 From the code above the following observations can be made:
 
@@ -67,11 +67,11 @@ Examples of test data involving apple can be:
 ### Test Data Builder for Apple
 Lets define a Builder for the Apple now.
 
-{% highlight java %}
+```java
 data class AppleBuilder(val ripeness: Double = 0.0, val leaves: Int = 1) {
     fun build() = Apple(leaves).apply { ripen(ripeness) }
 }
-{% endhighlight %}
+```
 
 From the code above the following observations can be made:
 
@@ -88,9 +88,9 @@ The `AppleBuilder` can be created in the following ways to construct instances o
 
 __Using Default Arguments__  
 
-{% highlight java %}
+```java
 val unripeAppleWith1Leaf = AppleBuilder().build()
-{% endhighlight %}
+```
 
 In the code above, the `AppleBuilder` is created by not specifying any constructor arguments. Note that this 
 is possible because the arguments in the constructor definition has default values. The instance of builder 
@@ -101,9 +101,9 @@ the constructor or function calls. The defined default values are assumed when a
 
 __Using Named Arguments__
 
-{% highlight java %}
+```java
 val unripeAppleWith2Leaves = AppleBuilder(leaves = 2).build()
-{% endhighlight %}
+```
 
 In this case the `AppleBuilder` instance is created with the customized value of `leaves` i.e. 2 and the default value 
 of `ripeness` i.e. 0.0 (an unripe apple with 2 leaves). Note that only one of two constructor arguments is specified 
@@ -135,11 +135,11 @@ in each test. Defining a builder, which can be re-used by the tests, will be hel
 a copy of this generic builder and specify the test specific parameters, which in this case will be leaves, and 
 build apples out of them.
 
-{% highlight java %}
+```java
 val ripeAppleBuilder = AppleBuilder(ripeness = 1, leaves = 0)
 
 val ripeAppleWith2Leaves = ripeAppleBuilder.copy(leaves = 2).build()
-{% endhighlight %}
+```
 
 In the above code, `ripeAppleBuilder` is the reusable builder which can be used by many tests. Though in this case 
 it seems an overhead to create a reusable builder, it becomes beneficial when builders are complex. The `copy()` 
