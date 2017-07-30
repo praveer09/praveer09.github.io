@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: Practical Guide to Java 8’s Date Time API
 date: '2017-03-03'
 comments: true
@@ -143,7 +143,7 @@ System.out.print(LocalDate.of(2017, APRIL, 1).atStartOfDay(pst));
 To get a list of valid geographical regions `ZoneId.getAvailableZoneIds()` can be used. By default the [IANA time zone database](https://www.iana.org/time-zones) is used.
 
 ## Epoch
-The API provides support of epoch referenced instants through the Instant class. The Instant class has the static factory method `ofEpochMilli()` and instance method `toEpochMilli()` that helps in conversion from and to epoch referenced instants. The `LocalDateTime` and `ZonedDateTime` objects can be created from epoch using the `Instant` object via the `ofInstant()` static factory method.
+The API provides support of [epoch referenced instants](https://en.wikipedia.org/wiki/Epoch_%28reference_date%29) through the Instant class. The Instant class has the static factory method `ofEpochMilli()` and instance method `toEpochMilli()` that helps in conversion from and to epoch referenced instants. The `LocalDateTime` and `ZonedDateTime` objects can be created from epoch using the `Instant` object via the `ofInstant()` static factory method.
 
 ```java
 // Milliseconds from epoch at the system's default time zone
@@ -160,20 +160,21 @@ LocalDateTime.ofInstant(Instant.EPOCH, ZoneId.of("UTC"));
 ```
 
 ## Intervals
-The API provides classes to represent interval between two dates or two times. Intervals can also be represented as strings. This is especially useful when you want to provide intervals in form of some configuration. The parse static factory method on the classes representing intervals can be used to create the instances.
+The API provides classes to represent interval between two dates or two times. Intervals can also be represented as strings. This is especially useful when you want to provide intervals in form of some configuration. The `parse` static factory method on the classes representing intervals can be used to create the instances.
 
 ### Time Intervals
-The Duration class is used to specify time intervals. Time intervals are specified using days, hours, minutes and seconds.
+The `Duration` class is used to specify time intervals. Time intervals are specified using days, hours, minutes and seconds.
 
 ```java
 // the below two expressions are equivalent
 Duration.parse("P1DT1H2M3S");
 Duration.ofDays(1).plusHours(1).plusMinutes(2).plusSeconds(3);
+
 LocalDateTime.now().plus(Duration.ofMinutes(5));
 ```
 
 ### Date Intervals
-The Period class is used to date intervals. Date intervals are specified using years, months, weeks and days.
+The `Period` class is used to date intervals. Date intervals are specified using years, months, weeks and days.
 
 ```java
 // the below two expressions are equivalent
@@ -182,6 +183,21 @@ Period.ofYears(1).plusMonths(2).plus(Period.ofWeeks(3)).plusDays(4);
 LocalDate.now().plus(Period.ofWeeks(1));
 ```
 
+## Switching between legacy and new API
+Often, for backward compatibility, you will need to switch between legacy types and new API. Following are few examples for the same.
+
+```java
+new Date().toInstant();
+Date.from(Instant.now());
+
+TimeZone.getTimeZone("UTC").toZoneId();
+TimeZone.getTimeZone(ZoneId.of("UTC"));
+
+Calendar.getInstance().toInstant();
+```
+
+## Summary
+I hope that this article covers most of the scenarios that you will come across while using the new Date Time API introduced as part of Java 8. In addition to serving as an improved library for date and time, it also serves as a good reference for designing fluent APIs.
 
 [JSR-310]: http://jcp.org/en/jsr/detail?id=310
 [immutability]: https://en.wikipedia.org/wiki/Immutable_object
