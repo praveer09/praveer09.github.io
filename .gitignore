@@ -1,12 +1,13 @@
+# project
 _site
 .sass-cache
-.DS_Store
+.vagrant
 .jekyll-metadata
 
-# Ignore the config file that's used for gh-pages.
-_config.gh-pages.yml
-
-Gemfile.lock
+# general
+.DS_Store
+Thumbs.db
+ehthumbs.db
 
 .idea/
 *.iml
