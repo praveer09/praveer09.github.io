@@ -17,7 +17,6 @@ of the operations available, which will help you in using them effectively.
 I will be covering the following basic operations:
 
 - Filtering
-- Slicing
 - Transforming
 - Searching
 - Rearranging
@@ -30,11 +29,10 @@ Let's use an example to understand Stream.
 
 ```java
 List<Person> people = ...
-List<String> namesOfPeopleBelow20 
-    = people.stream()  // bulding a stream
-        .filter(person -> person.getAge() < 20)  // pipelining a computation
-        .map(Person::getName)  // pipelining another computation
-        .collect(Collectors.toList());  // terminating a stream
+List<String> namesOfPeopleBelow20 = people.stream()  // bulding a stream
+    .filter(person -> person.getAge() < 20)  // pipelining a computation
+    .map(Person::getName)  // pipelining another computation
+    .collect(Collectors.toList());  // terminating a stream
 ```
 
 As you can see in the above example, multiple operations are chained together to form something like a pipeline, 
@@ -56,10 +54,63 @@ is not a Stream. In the example above the `collect(Collectors.toList())` returns
 Let's now look at the basic operations that we can do using Stream. Though we will be learning about the operations 
 applied individually on Stream, you can always mix and match them to derive different results.
 
-# Filtering Operations
+# Filtering
 As the word suggests, filtering operations allow objects to flow through itself only if the object fulfills the 
 conditions laid upon by a `Predicate`. The filter operator is composed with the `Predicate` before it is applied 
 to the Stream.   
+
+```java
+List<Person> listOfPeopleBelow20 = people.stream() 
+    .filter(person -> person.getAge() < 20)  // pipelining a computation
+    .collect(Collectors.toList());  // terminating a stream
+```
      
+# Transforming
+
+```java
+List<String> namesOfPeople = people.stream()
+    .map(Person::getName)
+    .collect(Collectors.toList());
+```
+
+# Searching
+
+```java
+boolean isAnyOneInGroupLessThan20Years = people.stream()
+    .anyMatch(person -> person.getAge() < 20);
+```
+
+# Rearranging
+
+```java
+List<Person> peopleSortedEldestToYoungest = people.stream()
+    .sorted(Comparator.comparing(Person::getAge).reversed())
+    .collect(Collectors.toList());
+```
+
+# Summarizing
+
+```java
+IntSummaryStatistics ageStatistics = people.stream()
+    .mapToInt(Person::getAge)
+    .summaryStatistics();
+
+ageStatistics.getAverage();
+ageStatistics.getCount();
+ageStatistics.getMax();
+ageStatistics.getMin();
+ageStatistics.getSum();
+```
+
+# Collecting
+
+# Grouping
+```java
+Map<Gender, Double> averageAgeByGender = people.stream()
+    .collect(Collectors.groupingBy(
+        Person::getGender, 
+        Collectors.averagingInt(Person::getAge)
+    ));
+```
 
 ## Summary
