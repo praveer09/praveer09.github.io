@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: Basis Operations in Java 8 Stream
 date: '2017-09-03'
 comments: true
