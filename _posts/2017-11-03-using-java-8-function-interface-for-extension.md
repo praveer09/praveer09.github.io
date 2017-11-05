@@ -11,8 +11,8 @@ In this article I will show how existing interfaces can be extended to provide a
 `Function` interface, introduced in Java 8, without breaking existing code. I will show, through practical examples, 
 the usages of the `apply`, `compose` and `andThen` methods from the `Function` interface.
 
-Let's consider an use case to solve and we will see how the `Function` interface can help us in solving the use case 
-with very minimal changes to existing code. 
+Let's consider a use case to solve and we will see how the `Function` interface can help us to implement it with 
+minimal changes to existing code. 
 
 # Use case
 Suppose I have an existing interface `SomeInterface` which takes an input `SomeInput` and returns an output 
@@ -177,8 +177,8 @@ class SomeClient {
 ```
 
 # Summary
-I hope you agree with me that by using the `Function` interface, you can easily extend your existing interfaces 
-to provide additional feature with minimal changes. 
+By using the `Function` interface, you can easily extend your existing interfaces to provide additional features 
+with minimal changes. 
 
 The gist for the above example can be found here 
 [at this link](https://gist.github.com/praveer09/be7787c35a5c62df09b405a3b41c1b0a).
