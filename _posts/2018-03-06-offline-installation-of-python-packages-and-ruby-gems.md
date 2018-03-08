@@ -23,41 +23,56 @@ Additionally offline installation is faster than the online installation as all 
 its dependencies are available and do not need to be searched online.
 
 # Python package offline installation
-The first step is to build the wheel archive for the required package and its dependencies. The `--wheel-dir` 
-option is used to specify the folder where wheel archives will be stored.
+
+## Step 1 (build the wheel archive)
+
+The first step is to build the wheel archive for the required package and its dependencies. 
 
 ```
 $ mkdir /tmp/wheel-ansible
 $ pip wheel --wheel-dir=/tmp/ansible-wheel 'ansible==2.4.1.0'
 ```
 
+The `--wheel-dir` option is used to specify the folder where wheel archives will be stored.
+
+## Step 2 (use the archive to perform offline installation)
+
 Now this `wheel-ansible` folder can be used to perform an offline installation. The folder can be made 
-available to the machine where you plan to perform an installation. The `--no-index` option is used to 
-instruct the `pip install` command to look for artifact at the `--find-links` URL instead of the package 
-index hosted online.
+available to the machine where you plan to perform an installation.
 
 ```
 $ pip install --no-index --find-links=/tmp/wheel-ansible ansible
 ```
 
+The `--no-index` option is used to 
+instruct the `pip install` command to look for artifact at the `--find-links` URL instead of the package 
+index hosted online.
+
 # Ruby gem offline installation
-Again the first step is to create the archive for the gem. The `--install-dir` option is used to specify 
-the directory where the gems will be installed. The `cache` directory within the install directory has the 
-gem installed. For the below case the gem `redis-3.3.5.gem` can be found inside the `gem-redis-3.5.5/cache/` folder.
+
+## Step 1 (build the gem archive)
 
 ```
 $ mkdir gem-redis-3.3.5
 $ gem install redis --version 3.3.5 --install-dir gem-redis-3.3.5
 ```
 
+The `--install-dir` option is used to specify 
+the directory where the gems will be installed. The `cache` directory within the install directory has the 
+gem installed. For the below case the gem `redis-3.3.5.gem` can be found inside the `gem-redis-3.5.5/cache/` folder.
+
+## Step 2 (use the archive to perform offline installation)
+
 Now this folder `gem-redis-3.3.5/cache` can be made available to the machine where you plan to perform an 
-installation. The `--local` option is used to tell the `gem install` to restrict to local domain and not go 
-out to the gem hosting site.
+installation.
 
 ```
 $ cd gem-redis-3.3.5/cache/
 $ gem install --local redis-3.3.5.gem
 ```
+
+The `--local` option is used to tell the `gem install` to restrict to local domain and not go 
+out to the gem hosting site.
 
 # Summary
 Offline installation of Python packages and Ruby gems can be a useful tool when the hosting service access 
