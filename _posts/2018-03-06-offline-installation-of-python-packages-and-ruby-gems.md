@@ -52,6 +52,8 @@ index hosted online.
 
 ## Step 1 (build the gem archive)
 
+Execute the below commands to create the gem archive.
+
 ```
 $ mkdir gem-redis-3.3.5
 $ gem install redis --version 3.3.5 --install-dir gem-redis-3.3.5
