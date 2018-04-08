@@ -1,28 +1,77 @@
 ---
 layout: post
 published: true
-title: Basis Operations in Java 8 Stream
+title: Practical Guide to Java 8's Stream
 date: '2017-09-03'
 comments: true
 categories: technology
 ---
 
-Java 8 Stream introduced a new way of performing operations upon a group of objects. In majority of the cases this 
-group of objects is a Java Collection. In this article I will be covering the basic stream operations that, according 
-to me, are used the most in daily programming. My goal from this article is that a developer who has never used, Java 
-8 Stream, should be able to quickly get up to speed with using the streams in his or her daily job after reading this 
-article. Even if you have are familiar with Stream operations, after reading this you should have a clear metal map 
-of the operations available, which will help you in using them effectively.
+`Stream` interface, introduced in Java 8, provides a new way to iterate and perform various operations over a 
+collection. Until Java 7, `for` and `for each` were the only options. In this article I will introduce you to 
+the `Stream` API and how it provides an abstraction over the common operations performed over a collection. 
+I will show how to replace the `for` and `for each` looping constructs with the `Stream` interface 
+and its methods. 
 
-I will be covering the following basic operations:
+The operations over a collection can be categorized into the following. I will try to cover all of them. 
 
-- Filtering
 - Transforming
+- Filtering
 - Searching
 - Rearranging
 - Summarizing
 - Collecting
 - Grouping
+
+I will show usages of different `Stream` interface and methods using examples. In each example I will show 
+the traditional approach and show how the same can be written using `Stream`. For the purpose of illustration I 
+will used a collection of `Person` objects. The `Person` class is shown below. 
+
+```java
+public class Person {
+    private final String name;
+    private final int age;
+    private final Gender gender;
+
+    public Person(String name, int age, Gender gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public String getName() { return name; }
+
+    public int getAge() { return age; }
+
+    public Gender getGender() { return gender; }
+}
+
+public enum Gender {
+    MALE, FEMALE;
+}
+```
+
+# Transforming 
+Let's say we want to collect all the names people in the person collection. 
+
+```java
+public List<String> transformingWithForLoop() {
+    List<Person> people = people();
+    final List<String> namesOfPeople = new ArrayList<>();
+    for (Person person : people) {
+        namesOfPeople.add(person.getName());
+    }
+    return namesOfPeople;
+}
+
+public List<String> transformingWithStream() {
+    List<Person> people = people();
+    List<String> namesOfPeople = people.stream()
+        .map(Person::getName)
+        .collect(Collectors.toList());
+    return namesOfPeople;
+}
+```
 
 # A quick introduction to Stream
 Let's use an example to understand Stream. 
