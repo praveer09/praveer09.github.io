@@ -6,6 +6,7 @@ date: '2018-11-24'
 comments: true
 categories: technology
 tags: [java]
+bigimg: /img/posts/practical-guide-to-java-stream-api.jpg
 ---
 
 `Stream` API was introduced in Java 8. It provided a ___declarative programming___ approach to iterate and perform 
