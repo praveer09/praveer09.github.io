@@ -4,6 +4,7 @@ title:  "RxJava - Part 1 - A Quick Introduction"
 date:   2016-02-13 21:00:00
 comments: true
 categories: technology
+tags: [java, reactive-programming]
 ---
 
 [RxJava][RxJava] is a library that helps programmers to write asynchronous, concurrent and resilient applications. Using 

@@ -5,6 +5,7 @@ title: Practical Guide to Java 8’s Date Time API
 date: '2017-03-03'
 comments: true
 categories: technology
+tags: [java]
 ---
 I will be covering the features of the Java 8’s Date Time API from a practical standpoint, which means those features that a developer uses on a daily basis. This API was introduced as part of the [JSR-310]. In addition to improvements over existing `Date` and `Calendar` in representing date and time, you can also witness design choices like [immutability] and [fluent style] of programming. The API can be found under the [java.time] package in the JDK.
 

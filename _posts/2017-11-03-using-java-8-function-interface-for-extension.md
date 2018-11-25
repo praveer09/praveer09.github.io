@@ -5,6 +5,7 @@ title: Using Java 8's Function interface for extension
 date: '2017-11-03'
 comments: true
 categories: technology
+tags: [java, functional-programming]
 ---
 
 In this article I will show how existing interfaces can be extended to provide additional features by using the 

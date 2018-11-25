@@ -4,6 +4,7 @@ title:  "Scoped Objects in Dagger 2"
 date:   2016-01-23 09:00:00
 comments: true
 categories: technology
+tags: [java]
 ---
 
 When you use [Dependency Injection][DependencyInjection], you may want to create objects that have different 

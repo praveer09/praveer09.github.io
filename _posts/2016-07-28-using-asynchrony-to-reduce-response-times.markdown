@@ -4,6 +4,7 @@ title:  "Using asynchrony to reduce response times in Java 8"
 date:   2016-07-28 11:00:00 +05:30
 comments: true
 categories: technology
+tags: [java, functional-programming, multi-threading]
 ---
 
 Java 8, among other changes, had introduced [`CompletableFuture`][Cf] which has made writing asynchronous programs in Java easy. 

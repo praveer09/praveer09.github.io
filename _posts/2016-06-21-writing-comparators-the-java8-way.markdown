@@ -4,6 +4,7 @@ title:  "Writing Comparators - The Java 8 Way"
 date:   2016-06-21 08:00:00 +05:30
 comments: true
 categories: technology
+tags: [java, functional-programming]
 ---
 
 Java 8 introduced a few default methods and static factory methods on the [Comparator interface][ComparatorInterface] 

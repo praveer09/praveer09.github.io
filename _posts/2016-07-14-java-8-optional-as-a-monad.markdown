@@ -4,6 +4,7 @@ title:  "Java 8 Optional as a Monad"
 date:   2016-07-14 21:30:00 +05:30
 comments: true
 categories: technology
+tags: [java, functional-programming]
 ---
 
 Lately there has been lot of discussions around functional programming and object oriented programming 

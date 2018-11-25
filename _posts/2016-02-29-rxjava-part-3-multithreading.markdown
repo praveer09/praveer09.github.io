@@ -4,6 +4,7 @@ title:  "RxJava - Part 3 - Multithreading"
 date:   2016-02-29 18:00:00
 comments: true
 categories: technology
+tags: [java, reactive-programming, multi-threading]
 ---
 
 [RxJava][RxJava] makes it easy to write asynchronous and concurrent applications. To be able to do that you 

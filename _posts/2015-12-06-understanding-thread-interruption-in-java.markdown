@@ -4,6 +4,7 @@ title:  "Understanding Thread Interruption in Java"
 date:   2015-12-06 09:00:00
 comments: true
 categories: technology
+tags: [java]
 ---
 
 You may come across use cases where you would need to perform some long running tasks on separate threads. 

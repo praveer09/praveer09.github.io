@@ -4,6 +4,7 @@ title:  "How functional programming helps me write clean code"
 date:   2016-08-05 08:30:00 +05:30
 comments: true
 categories: technology
+tags: [functional-programming]
 ---
 
 I have been writing code for several years now. One thing that I have realized is that I have spent much more 

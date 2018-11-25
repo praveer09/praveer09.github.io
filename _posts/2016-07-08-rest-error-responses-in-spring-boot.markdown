@@ -4,6 +4,7 @@ title:  "REST Error Responses in Spring Boot"
 date:   2016-07-08 08:30:00 +05:30
 comments: true
 categories: technology
+tags: [java, spring]
 ---
 
 The format of error responses from [REST][REST] web services has always been a topic of grey area for me. According 

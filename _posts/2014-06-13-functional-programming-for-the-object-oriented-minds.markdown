@@ -4,6 +4,7 @@ title:  "Functional Programming for the Object Oriented Minds"
 date:   2014-06-13 21:00:00
 comments: true
 categories: technology
+tags: [java, functional-programming]
 ---
 
 In this article I make an attempt to share my understanding of functional programming and how it can help in improving 

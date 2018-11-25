@@ -4,6 +4,7 @@ title:  "Testing REST APIs with REST-assured"
 date:   2016-02-06 12:00:00
 comments: true
 categories: technology
+tags: [java, testing]
 ---
 
 REST APIs are HTTP-based web services that adhere to [REST architectural constraints][REST]. If you look 

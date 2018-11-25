@@ -4,6 +4,7 @@ title:  "Writing Test Data Builders Made Easy With Kotlin"
 date:   2015-12-26 18:00:00
 comments: true
 categories: technology
+tags: [kotlin, testing]
 ---
  
 In this article I will be focusing on few features of [Kotlin][KotlinLang] that help in __writing 

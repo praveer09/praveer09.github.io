@@ -4,6 +4,7 @@ title:  "RxJava - Part 2 - Creating an Observable"
 date:   2016-02-21 09:00:00
 comments: true
 categories: technology
+tags: [java, reactive-programming]
 ---
 
 An [Observable][Observable] is the heart of RxJava. It is the source of data or events in Reactive Programming. 

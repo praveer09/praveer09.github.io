@@ -4,6 +4,7 @@ title:  "Using Optional to Specify Presence or Absence of a Value"
 date:   2015-09-19 09:00:00
 comments: true
 categories: technology
+tags: [java, functional-programming]
 ---
 
 Java 8 introduced Optional which serves as a container for values abstracting out the presence or absence of values. 
