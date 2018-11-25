@@ -5,6 +5,7 @@ title: Offline installation of Python packages and Ruby gems
 date: '2018-03-06'
 comments: true
 categories: technology
+tags: [devops]
 ---
 
 In this article I will show how one can perform offline installation of Python packages and Ruby gems. 
