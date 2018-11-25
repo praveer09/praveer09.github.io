@@ -151,7 +151,7 @@ boolean isAnyOneInGroupLessThan20Years = people.stream()
 
 # Reordering {#reordering}
 If you want to order the elements in a collection, you can use the `sorted` intermediate operator. It takes an 
-instance of a `Comparator` interface. To create the instance I have used the `comparing` factory method on `Compartor`. 
+instance of a `Comparator` interface. To create the instance I have used the `comparing` factory method on `Comparator`. 
 If you are interested to know more around this, please checkout [this link][comparator]. 
 
 In the example below the resulting collection is sorted by age in descending order.
