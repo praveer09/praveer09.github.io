@@ -1,4 +1,17 @@
 /*
+  Tailwind v4 is wired in additively: we import only the theme + utilities
+  layers (NOT Preflight) so Tailwind utility classes and the typography plugin
+  are available without resetting the Bear Blog base styles below.
+  NOTE: the `prose` typography class is installed but intentionally not applied
+  yet — adopting it requires renaming the layout's existing `.prose` wrapper and
+  migrating content styling off Bear Blog, which is deferred to a later phase.
+*/
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@plugin '@tailwindcss/typography';
+
+/*
   The CSS in this style tag is based off of Bear Blog's default CSS.
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
