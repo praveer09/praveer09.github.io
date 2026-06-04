@@ -43,6 +43,16 @@ Note the three values you'll type into the dashboard:
 
 Make sure `pnpm-lock.yaml` is committed.
 
+> ✅ **CLI-verified (clean-room build):** removed `node_modules` + `dist`, ran
+> `pnpm install --frozen-lockfile` (17.9s, exit 0) then `pnpm run build` (exit 0). Produced
+> `dist/` with `dist/_redirects` (42 redirects), 22 github.io stub pages, and 32 rendered pages
+> (54 HTML files total); postbuild `verify-redirects` passed. **Dashboard values to enter:**
+> - **Build command:** `pnpm run build`  (runs prebuild gen + postbuild verify automatically)
+> - **Build output directory:** `dist`
+> - **Environment variable:** `NODE_VERSION = 22`
+> Run `pwsh scripts/test-redirects.ps1 -BaseUrl https://<project>.pages.dev` after the first
+> deploy to validate the redirect checklist (4.4).
+
 ---
 
 ## 4.3 — 🧑‍💻 Connect the repo in Cloudflare Pages
