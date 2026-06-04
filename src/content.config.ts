@@ -13,7 +13,16 @@ const blog = defineCollection({
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
-			heroImage: z.optional(image()),
+			tags: z.array(z.string()).default([]),
+			draft: z.boolean().default(false),
+			// Old URLs (github.io + Medium) that should 301 to this post.
+			redirectFrom: z.array(z.string()).default([]),
+			cover: z
+				.object({
+					src: image(),
+					alt: z.string(),
+				})
+				.optional(),
 		}),
 });
 

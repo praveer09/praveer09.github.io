@@ -8,12 +8,12 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, cover } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} image={cover?.src} />
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -61,8 +61,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			<article>
 				<div class="hero-image">
 					{
-						heroImage && (
-							<Image width={1020} height={510} src={heroImage} alt="" />
+						cover && (
+							<Image
+								width={1020}
+								height={510}
+								src={cover.src}
+								alt={cover.alt}
+							/>
 						)
 					}
 				</div>
