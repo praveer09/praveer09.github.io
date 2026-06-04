@@ -1,13 +1,32 @@
-# project
-_site
-.sass-cache
-.vagrant
-.jekyll-metadata
+# build output
+dist/
+# generated types
+.astro/
 
-# general
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# OS-specific files
 .DS_Store
 Thumbs.db
 ehthumbs.db
 
+# editor / IDE
 .idea/
 *.iml
+
+# legacy Jekyll build artifacts (sources kept under _legacy-jekyll/)
+_legacy-jekyll/_site
+_legacy-jekyll/.sass-cache
+_legacy-jekyll/.jekyll-metadata
+.vagrant

@@ -1,0 +1,9 @@
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+minimumReleaseAgeExclude:
+  - '@astrojs/mdx@6.0.2'
+  - astro@6.4.4
+allowBuilds:
+  esbuild: true
+  sharp: true
