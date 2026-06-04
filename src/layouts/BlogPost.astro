@@ -8,12 +8,32 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, cover } = Astro.props;
+const { title, description, pubDate, updatedDate, cover, tags } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = cover ? new URL(cover.src.src, Astro.site).href : undefined;
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: title,
+	description,
+	datePublished: pubDate.toISOString(),
+	...(updatedDate && { dateModified: updatedDate.toISOString() }),
+	...(ogImage && { image: ogImage }),
+	url: canonicalURL,
+	mainEntityOfPage: canonicalURL,
+	author: { '@type': 'Person', name: 'Praveer Gupta' },
+};
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} image={cover?.src} />
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(jsonLd)}
+			is:inline
+		/>
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -52,6 +72,19 @@ const { title, description, pubDate, updatedDate, cover } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.post-tags {
+				margin-top: 3em;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75em;
+			}
+			.post-tags a {
+				color: rgb(var(--gray));
+				text-decoration: none;
+			}
+			.post-tags a:hover {
+				color: rgb(var(--accent));
+			}
 		</style>
 	</head>
 
@@ -87,6 +120,15 @@ const { title, description, pubDate, updatedDate, cover } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+					{
+						tags.length > 0 && (
+							<footer class="post-tags">
+								{tags.map((tag) => (
+									<a href={`/tags/${tag}/`}>#{tag}</a>
+								))}
+							</footer>
+						)
+					}
 				</div>
 			</article>
 		</main>

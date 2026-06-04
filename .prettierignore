@@ -5,3 +5,12 @@ pnpm-lock.yaml
 _legacy-jekyll
 migration
 docs
+
+# generated redirect artifacts
+public/_redirects
+public/about-me
+public/book-review
+public/page2
+public/technology
+public/feed.xml
+public/sitemap.xml

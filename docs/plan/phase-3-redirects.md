@@ -127,14 +127,32 @@ served the HTML.
 
 ## Definition of Done
 
-- [ ] `scripts/gen-redirects.mjs` and `scripts/gen-redirect-stubs.mjs` exist and run clean.
-- [ ] `pnpm run build` regenerates `public/_redirects` and the stub pages every time.
-- [ ] `public/_redirects` contains a line for **every** old URL in the inventory; no `404`
-      lines; total well under the 2,000/100 limits.
-- [ ] A stub `index.html` exists in `dist/` for every github.io-host old path, with canonical +
-      meta-refresh + `noindex`.
-- [ ] Real post pages emit a `praveergupta.in` self-canonical.
-- [ ] Spot-check: pick 3 old URLs (one Medium, one github.io-dated, the feed) and confirm each
-      has a matching redirect/stub.
+- [x] `scripts/gen-redirects.mjs` and `scripts/gen-redirect-stubs.mjs` exist and run clean.
+- [x] `pnpm run build` regenerates `public/_redirects` and the stub pages every time (prebuild),
+      and validates them (postbuild via `scripts/verify-redirects.mjs`).
+- [x] `public/_redirects` contains a line for **every** old URL in the inventory (except the 5
+      parked Medium-only posts, see below); no `404` lines; 42 redirects — well under limits.
+- [x] A stub `index.html` exists in `dist/` for every github.io-host **directory-style** old path,
+      with canonical + meta-refresh + `noindex`.
+- [x] Real post pages emit a `praveergupta.in` self-canonical (+ JSON-LD `BlogPosting`).
+- [x] Spot-check: Medium flat path (301), github.io-dated path (stub), `/feed` (301) all verified.
+
+### Findings / decisions recorded during 3.x
+
+- **Cloudflare static-asset precedence:** on Cloudflare Pages, static assets take precedence over
+  `_redirects`. So github.io-style stub paths soft-redirect (canonical + meta-refresh) on the
+  canonical host instead of hard-301 — acceptable, since the canonical-host inbound links are the
+  Medium **flat** paths, which have no stub and therefore get real 301s.
+- **`.xml` paths are NOT stubbed** (`/feed.xml`, `/sitemap.xml`): an HTML meta-refresh is useless to
+  XML clients and a stub would shadow the real `_redirects` 301 on Cloudflare. They are handled by
+  `_redirects` only.
+- **`/tags/` route added** (`src/pages/tags/index.astro` + `[tag].astro`) so `/tagged/*` → `/tags/`
+  resolves; added explicit CSV row for the base `/tagged` (the `/tagged/*` splat does not match it).
+- **5 parked Medium-only posts** (empty `new_slug`/`new_path`) intentionally 404 until recreated from
+  the Medium export. Listed in the `_redirects` header comment and allowlisted in
+  `scripts/verify-redirects.mjs`.
+- **Deploy requirement:** generated artifacts are gitignored, so every deploy MUST run
+  `pnpm run build` (NOT `astro build` directly) so the prebuild step emits `_redirects` + stubs.
+  Phase 4 (Cloudflare build command) and Phase 5 (GitHub Pages workflow) must use `pnpm run build`.
 
 ➡️ Next: [Phase 4 — Cloudflare account & publishing](./phase-4-cloudflare-publish.md)
