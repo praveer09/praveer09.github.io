@@ -1,6 +1,6 @@
 ---
-title: 'I moved my blog off Medium, and rebuilt it with AI as my coding partner'
-description: 'After seven years away from public writing, I moved my blog off Medium to a modern static site, and used GitHub Copilot CLI as a learning partner, not a shortcut.'
+title: 'A new way to learn and build software'
+description: 'A mail from Medium pushed me to rebuild my blog from scratch. Doing it with GitHub Copilot CLI showed me a new way to learn and build software: bring the judgment, let the tool bring the speed.'
 pubDate: '2026-06-05'
 tags: [ai, web, meta]
 ---
@@ -13,7 +13,8 @@ It has been more than seven years since I wrote here regularly. In that time I h
 engineer, and the way we build software has changed even more. So instead of clicking through Medium's
 migration steps, I did something that took a little longer and taught me a great deal more: I rebuilt
 this blog from scratch, moved it off Medium, and brought it back on a modern setup, with AI coding
-tools as my pair. This post is about the **why** and the **what**.
+tools as my pair. This post is about the **why** and the **what** of that move, and about the new way
+of learning and building software I found along the way.
 
 ## Why bother, when migrating was 15 minutes?
 
@@ -101,7 +102,8 @@ The lesson is that **AI did not replace what I know; it rewarded it**. Every goo
 way came from years of building software: knowing that old links must not break, that a site should be
 fast for the reader and not just the author, that quality is cheaper when it is checked automatically.
 The AI made the first working version arrive much faster, but I still had to know which ideas were
-worth having.
+worth having. That, to me, is the real shift: not just a faster way to build, but a new way to _learn_
+while building, with your own experience as the steering wheel.
 
 If you have been building software for a while and have been watching these tools from a distance, I
 would gently suggest a practical experiment: pick a small, personal project you care about, and use
