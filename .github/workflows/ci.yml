@@ -76,10 +76,11 @@ jobs:
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          # --base resolves root-relative links (e.g. /blog/) against the site root.
-          # Hosts that block bots (403/429) are excluded to avoid false positives.
+          # --root-dir (absolute) resolves root-relative links (e.g. /blog/)
+          # against the built site root. Hosts that block bots (403/429) are
+          # excluded to avoid false positives.
           args: >-
-            --no-progress --base dist
+            --no-progress --root-dir ${{ github.workspace }}/dist
             --exclude 'medium\.com'
             --exclude 'twitter\.com'
             --exclude 'x\.com'
