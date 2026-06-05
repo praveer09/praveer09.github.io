@@ -15,10 +15,16 @@ const posts = (await getCollection('blog'))
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead
+			title={`All Posts | ${SITE_TITLE}`}
+			description={SITE_DESCRIPTION}
+		/>
 		<style>
 			main {
 				width: 960px;
+			}
+			.page-title {
+				margin: 0 0 2rem;
 			}
 			ul {
 				display: flex;
@@ -89,6 +95,7 @@ const posts = (await getCollection('blog'))
 	<body>
 		<Header />
 		<main>
+			<h1 class="page-title">All Posts</h1>
 			<section>
 				<ul>
 					{
