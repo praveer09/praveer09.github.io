@@ -24,6 +24,27 @@ const analyticsEnabled =
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<!--
+  Theme bootstrap: runs synchronously before first paint so the correct theme
+  is applied with no flash. Honors a saved choice, else the OS preference.
+-->
+<script is:inline>
+	(function () {
+		let saved;
+		try {
+			saved = localStorage.getItem('theme');
+		} catch (e) {
+			/* storage blocked — fall back to OS preference */
+		}
+		const theme =
+			saved === 'light' || saved === 'dark'
+				? saved
+				: window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light';
+		document.documentElement.dataset.theme = theme;
+	})();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="sitemap" href="/sitemap-index.xml" />

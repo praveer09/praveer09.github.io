@@ -27,6 +27,9 @@ const configured =
 	const container = document.getElementById('giscus-container');
 
 	if (container) {
+		const giscusTheme = () =>
+			document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+
 		const loadGiscus = () => {
 			const s = document.createElement('script');
 			s.src = 'https://giscus.app/client.js';
@@ -41,7 +44,7 @@ const configured =
 			s.setAttribute('data-reactions-enabled', '1');
 			s.setAttribute('data-emit-metadata', '0');
 			s.setAttribute('data-input-position', 'bottom');
-			s.setAttribute('data-theme', 'light');
+			s.setAttribute('data-theme', giscusTheme());
 			s.setAttribute('data-lang', 'en');
 			container.appendChild(s);
 		};
@@ -56,6 +59,16 @@ const configured =
 			{ rootMargin: '200px' },
 		);
 		observer.observe(container);
+
+		// Keep an already-rendered giscus iframe in sync with the site toggle.
+		window.addEventListener('theme-change', (event) => {
+			const theme = event.detail?.theme === 'dark' ? 'dark' : 'light';
+			const iframe = document.querySelector('iframe.giscus-frame');
+			iframe?.contentWindow?.postMessage(
+				{ giscus: { setConfig: { theme } } },
+				'https://giscus.app',
+			);
+		});
 	}
 </script>
 
