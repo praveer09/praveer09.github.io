@@ -44,8 +44,9 @@ $fail = 0
 foreach ($c in $cases) {
 	$path = $c[0]; $wantStatus = $c[1]; $wantLoc = $c[2]
 	$url = "$BaseUrl$path"
-	# -s silent, -S show errors, -D - dump headers, -o NUL discard body, no -L (don't follow)
-	$headers = & curl.exe -sS -D - -o $null $url 2>$null
+	# -s silent, -S show errors, -D - dump headers to stdout, -o NUL discard body,
+	# no -L (don't follow redirects). NUL is the Windows null device.
+	$headers = & curl.exe -sS -D - -o NUL $url 2>$null
 	$statusLine = ($headers | Select-String -Pattern '^HTTP/' | Select-Object -Last 1).ToString()
 	$status = if ($statusLine -match 'HTTP/\S+\s+(\d+)') { [int]$Matches[1] } else { 0 }
 	$location = ($headers | Select-String -Pattern '^[Ll]ocation:\s*(.+?)\s*$' | Select-Object -Last 1)

@@ -102,11 +102,15 @@ If you'd rather deploy/preview from the terminal (and let Copilot CLI drive it):
 
 ## Definition of Done
 
-- [ ] Cloudflare account created with 2FA.
-- [ ] `praveer09/praveer09.github.io` connected to a Cloudflare Pages project; build command
-      `pnpm run build`, output `dist`, `NODE_VERSION=22`.
-- [ ] First production build is green; site loads on `https://<project>.pages.dev`.
-- [ ] Opening a PR produces a working **preview URL**.
-- [ ] The 4.4 redirect checklist passes on `*.pages.dev` (301s + correct `Location`).
+- [x] Cloudflare account created with 2FA.
+- [x] `praveer09/praveer09.github.io` connected to a Cloudflare **Pages** project
+      (`praveergupta`); build command `pnpm run build`, output `dist`, `NODE_VERSION=22`.
+      (Note: the dashboard's default "Import a repository" funnels into **Workers**; the Pages
+      project is created via **Workers & Pages → Create → Pages → Connect to Git**.)
+- [x] First production build green; site loads on `https://praveergupta.pages.dev`.
+- [x] Non-production branch builds enabled (preview deploys).
+- [x] The 4.4 redirect checklist passes on `*.pages.dev`: 14/14 — 200s for live pages, 301s
+      with correct `Location` for Medium/github.io/feed/sitemap/about-me/tagged/archive paths
+      (`pwsh scripts/test-redirects.ps1 -BaseUrl https://praveergupta.pages.dev`).
 
 ➡️ Next: [Phase 5 — DNS cutover for praveergupta.in](./phase-5-dns-cutover.md)
