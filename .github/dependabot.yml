@@ -6,7 +6,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Asia/Kolkata
     open-pull-requests-limit: 5
     labels:
@@ -33,7 +33,7 @@ updates:
     schedule:
       interval: weekly
       day: monday
-      time: "06:00"
+      time: '06:00'
       timezone: Asia/Kolkata
     labels:
       - dependencies
@@ -43,4 +43,4 @@ updates:
     groups:
       actions-all:
         patterns:
-          - "*"
+          - '*'
