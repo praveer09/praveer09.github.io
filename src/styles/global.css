@@ -154,6 +154,11 @@ code {
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
 }
+/* Tailwind Typography wraps inline code in literal backticks — suppress them. */
+.prose code::before,
+.prose code::after {
+	content: none;
+}
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
