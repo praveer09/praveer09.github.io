@@ -1,6 +1,6 @@
 ---
 title: 'A new way to learn and build software'
-description: 'A mail from Medium pushed me to rebuild my blog from scratch. Doing it with GitHub Copilot CLI showed me a new way to learn and build software: bring the judgment, let the tool bring the speed.'
+description: 'An email from Medium pushed me to rebuild my blog from scratch. Using GitHub Copilot CLI turned it into a lesson in how AI can speed up the work without replacing the judgment.'
 pubDate: '2026-06-05'
 tags: [ai, learning, web]
 ---
@@ -13,8 +13,8 @@ It has been more than seven years since I wrote here regularly. In that time I h
 engineer, and the way we build software has changed even more. So instead of clicking through Medium's
 migration steps, I did something that took a little longer and taught me a great deal more: I rebuilt
 this blog from scratch, moved it off Medium, and brought it back on a modern setup, with AI coding
-tools as my pair. This post is about the **why** and the **what** of that move, and about the new way
-of learning and building software I found along the way.
+tools as my pair. This post is about the **why** and the **what** of that move, and how rebuilding
+something small turned into a lesson in building software the modern way, and learning it as I went.
 
 ## Why bother, when migrating was 15 minutes?
 
@@ -33,8 +33,9 @@ a low-risk place to find out.
 
 ## What I moved to
 
-The new site is what people in my field call a _static site_, hosted in a _serverless_ way. Those
-terms sound technical, so here is the plain-English version.
+The new site is what people in my field call a _static site_, hosted in a _serverless_ way — and
+choosing and wiring those pieces together myself was a large part of the learning. Those terms sound
+technical, so here is the plain-English version.
 
 A **static site** means every page is baked into its final form ahead of time, like printing a
 magazine. When you open this page, no server has to assemble it from scratch for your visit; it was
@@ -102,7 +103,7 @@ The lesson is that **AI did not replace what I know; it rewarded it**. Every goo
 way came from years of building software: knowing that old links must not break, that a site should be
 fast for the reader and not just the author, that quality is cheaper when it is checked automatically.
 The AI made the first working version arrive much faster, but I still had to know which ideas were
-worth having. That, to me, is the real shift: not just a faster way to build, but a new way to _learn_
+worth having. That, to me, is what felt new: not just a faster way to build, but a way to _learn_
 while building, with your own experience as the steering wheel.
 
 If you have been building software for a while and have been watching these tools from a distance, I
