@@ -8,7 +8,7 @@ redirectFrom:
 ---
 
 I have created a video, in which I show how easy it is to spring up an application quickly
-with [Spring Boot](SpringBoot).
+with [Spring Boot][SpringBoot].
 
 Spring Boot does this by using multiple frameworks and tools, both from Spring’s ecosystem and outside,
 and combining them with sensible configurations. As a result decisions around concerns like logging,

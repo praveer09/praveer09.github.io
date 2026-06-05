@@ -76,15 +76,12 @@ jobs:
       - name: Check links with lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          # --root-dir (absolute) resolves root-relative links (e.g. /blog/)
-          # against the built site root. Hosts that block bots (403/429) are
-          # excluded to avoid false positives.
+          # --offline checks only internal/local links (deterministic, no
+          # network). External link-rot on archival posts would otherwise create
+          # permanent noise; --root-dir (absolute) resolves root-relative links
+          # (e.g. /blog/) against the built site root.
           args: >-
-            --no-progress --root-dir ${{ github.workspace }}/dist
-            --exclude 'medium\.com'
-            --exclude 'twitter\.com'
-            --exclude 'x\.com'
-            --exclude 'linkedin\.com'
+            --no-progress --offline --root-dir ${{ github.workspace }}/dist
             'dist/**/*.html'
           fail: true
         env:
