@@ -34,8 +34,4 @@ ehthumbs.db
 .idea/
 *.iml
 
-# legacy Jekyll build artifacts (sources kept under _legacy-jekyll/)
-_legacy-jekyll/_site
-_legacy-jekyll/.sass-cache
-_legacy-jekyll/.jekyll-metadata
 .vagrant

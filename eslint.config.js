@@ -3,14 +3,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
 	{
-		ignores: [
-			'dist/',
-			'.astro/',
-			'node_modules/',
-			'_legacy-jekyll/',
-			'migration/',
-			'docs/',
-		],
+		ignores: ['dist/', '.astro/', 'node_modules/', 'migration/', 'docs/'],
 	},
 	...eslintPluginAstro.configs.recommended,
 	{
