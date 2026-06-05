@@ -12,7 +12,7 @@
 		"gen:stubs": "node scripts/gen-redirect-stubs.mjs",
 		"prebuild": "node scripts/gen-redirects.mjs && node scripts/gen-redirect-stubs.mjs",
 		"build": "astro build",
-		"postbuild": "node scripts/verify-redirects.mjs",
+		"postbuild": "node scripts/verify-redirects.mjs && node scripts/verify-diagrams.mjs",
 		"verify:redirects": "node scripts/verify-redirects.mjs",
 		"verify:live": "node scripts/verify-live-redirects.mjs",
 		"preview": "astro preview",
@@ -30,6 +30,8 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.9",
+		"@beoe/cache": "^0.1.1",
+		"@beoe/rehype-mermaid": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.3.0",
 		"eslint": "^10.4.1",
@@ -38,10 +40,8 @@
 		"playwright": "^1.60.0",
 		"prettier": "^3.8.3",
 		"prettier-plugin-astro": "^0.14.1",
-		"rehype-mermaid": "^3.0.0",
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.60.1",
-		"unist-util-visit": "^5.1.0"
+		"typescript-eslint": "^8.60.1"
 	}
 }

@@ -177,13 +177,14 @@ hr {
 	border-top: 1px solid rgb(var(--gray-light));
 }
 /*
-  Mermaid diagrams render to a static inline SVG at build time and are wrapped in
-  <figure class="mermaid-figure"> by a local rehype plugin. They sit on an
-  intentional light "canvas" card in BOTH themes (the diagram is themed once at
-  build, so it cannot follow the runtime data-theme toggle) — this keeps the
-  diagram legible and looking deliberate in dark mode rather than half-inverted.
+  Mermaid diagrams render to a static inline SVG at build time (via
+  @beoe/rehype-mermaid) and are emitted as <figure class="beoe mermaid">. They
+  sit on an intentional light "canvas" card in BOTH themes (the diagram is themed
+  once at build, so it cannot follow the runtime data-theme toggle) — this keeps
+  the diagram legible and looking deliberate in dark mode rather than
+  half-inverted.
 */
-.mermaid-figure {
+figure.beoe {
 	margin: 2em 0;
 	padding: 1.25rem;
 	background-color: #ffffff;
@@ -192,7 +193,7 @@ hr {
 	overflow-x: auto;
 	text-align: center;
 }
-.mermaid-figure svg {
+figure.beoe svg {
 	display: block;
 	max-width: 100%;
 	height: auto;

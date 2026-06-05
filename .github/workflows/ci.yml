@@ -1,11 +1,18 @@
 # Phase 7.2 + 7.3 — CI quality gate and a non-blocking link safety net.
 #
 # `verify` (blocking) lints, typechecks and builds on every PR and on push to
-# master. The build's `postbuild` step runs `scripts/verify-redirects.mjs`, so
-# redirect/stub integrity is ALREADY enforced as a blocking gate here — there is
-# no separate non-blocking redirect job (that would just duplicate this check).
-# The build renders ```mermaid blocks to static SVG via rehype-mermaid, which
-# needs headless Chromium — installed (and cached) before the build below.
+# master. The build's `postbuild` step runs `scripts/verify-redirects.mjs` and
+# `scripts/verify-diagrams.mjs`, so redirect/stub integrity AND diagram-render
+# completeness are enforced as blocking gates here.
+#
+# IMPORTANT: this build runs BROWSERLESS (PLAYWRIGHT_BROWSERS_PATH points at a
+# non-existent dir) on purpose, to mirror Cloudflare Pages — which builds the
+# site WITHOUT a headless browser. Mermaid diagrams must therefore come from the
+# committed cache (.beoe/cache.sqlite). If a diagram was added/edited without
+# committing a refreshed cache, the browserless render empties that post's body
+# and `verify-diagrams` fails the job — catching the regression before it can
+# silently ship an empty page on Cloudflare. (Refresh the cache locally, where
+# the devcontainer provides Chromium, then commit it.)
 #
 # `link-check` (non-blocking) downloads the built `dist/` from `verify` and runs
 # lychee over it to catch broken links inside post content — something the
@@ -52,23 +59,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - name: Install Playwright Chromium (for build-time Mermaid rendering)
-        run: pnpm exec playwright install --with-deps chromium
-
       - name: Lint
         run: pnpm run lint
 
       - name: Typecheck
         run: pnpm run typecheck
 
-      - name: Build (prebuild generates redirects + stubs, postbuild verifies)
+      - name: Build (browserless — mirrors Cloudflare; diagrams come from the committed cache)
         run: pnpm run build
+        env:
+          # Force a browserless build so verify-diagrams proves the committed
+          # .beoe cache is complete (exactly how Cloudflare Pages builds).
+          PLAYWRIGHT_BROWSERS_PATH: /nonexistent-ci-browserless
 
       - name: Upload built site
         uses: actions/upload-artifact@v7
