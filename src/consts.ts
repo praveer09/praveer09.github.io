@@ -19,4 +19,4 @@ export const GISCUS = {
 // Get it from Cloudflare dashboard > Analytics & Logs > Web Analytics > add
 // praveergupta.in. While it starts with "REPLACE", no beacon is emitted.
 // Cloudflare Web Analytics is cookieless, so no consent banner is required.
-export const CF_ANALYTICS_TOKEN = 'REPLACE_WITH_CF_BEACON_TOKEN';
+export const CF_ANALYTICS_TOKEN = '1da7d200941741af88503eebf0c09c7f';
