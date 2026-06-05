@@ -9,7 +9,7 @@ redirectFrom:
 ---
 
 In this article I will show how one can perform offline installation of Python packages and Ruby gems.
-For Python packages I will be using [pip] and [cached wheels](wheel). For Ruby gems I will be using [RubyGems].
+For Python packages I will be using [pip] and [cached wheels][wheel]. For Ruby gems I will be using [RubyGems].
 
 # Need for offline installation
 

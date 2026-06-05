@@ -1,0 +1,88 @@
+# Phase 7.2 + 7.3 — CI quality gate and a non-blocking link safety net.
+#
+# `verify` (blocking) lints, typechecks and builds on every PR and on push to
+# master. The build's `postbuild` step runs `scripts/verify-redirects.mjs`, so
+# redirect/stub integrity is ALREADY enforced as a blocking gate here — there is
+# no separate non-blocking redirect job (that would just duplicate this check).
+#
+# `link-check` (non-blocking) downloads the built `dist/` from `verify` and runs
+# lychee over it to catch broken links inside post content — something the
+# redirect validator never inspects. It is `continue-on-error`, so a flaky
+# external link reports a red job for awareness without blocking the PR.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, typecheck, build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        # version is read from the "packageManager" field in package.json
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build (prebuild generates redirects + stubs, postbuild verifies)
+        run: pnpm run build
+
+      - name: Upload built site
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  link-check:
+    name: Link safety net (non-blocking)
+    needs: verify
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Check links with lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # --offline checks only internal/local links (deterministic, no
+          # network). External link-rot on archival posts would otherwise create
+          # permanent noise; --root-dir (absolute) resolves root-relative links
+          # (e.g. /blog/) against the built site root.
+          args: >-
+            --no-progress --offline --root-dir ${{ github.workspace }}/dist
+            'dist/**/*.html'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
