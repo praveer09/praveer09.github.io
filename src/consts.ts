@@ -14,3 +14,9 @@ export const GISCUS = {
 	category: 'Announcements',
 	categoryId: 'DIC_kwDOATQPFs4C-kIG',
 };
+
+// Cloudflare Web Analytics beacon token (public — it ships in client HTML).
+// Get it from Cloudflare dashboard > Analytics & Logs > Web Analytics > add
+// praveergupta.in. While it starts with "REPLACE", no beacon is emitted.
+// Cloudflare Web Analytics is cookieless, so no consent banner is required.
+export const CF_ANALYTICS_TOKEN = '1da7d200941741af88503eebf0c09c7f';
