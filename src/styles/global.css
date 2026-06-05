@@ -25,9 +25,53 @@
 	--gray-light: 229, 233, 240;
 	--gray-dark: 34, 41, 57;
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--bg: #ffffff;
+	--surface: #ffffff;
 	--box-shadow:
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
+	color-scheme: light;
+}
+/*
+  Dark theme: re-point the existing color tokens so every rule built on them
+  inverts automatically. The active theme is set on <html data-theme="..."> by
+  a blocking inline script in BaseHead (no flash of the wrong theme on load).
+*/
+html[data-theme='dark'] {
+	--accent: #8c9eff;
+	--accent-dark: #aeb8ff;
+	--black: 235, 237, 240;
+	--gray: 145, 158, 187;
+	--gray-light: 42, 48, 62;
+	--gray-dark: 200, 206, 218;
+	--gray-gradient: rgba(30, 34, 46, 60%), #0d0f16;
+	--bg: #0d0f16;
+	--surface: #161922;
+	color-scheme: dark;
+}
+/*
+  The post body wrapper carries Tailwind Typography's `prose` class, whose color
+  tokens default to dark-on-light. In dark mode re-point them to the site's dark
+  palette so bold text, blockquotes, links, headings and borders stay legible.
+*/
+html[data-theme='dark'] .prose {
+	--tw-prose-body: rgb(var(--gray-dark));
+	--tw-prose-headings: rgb(var(--black));
+	--tw-prose-lead: rgb(var(--gray-dark));
+	--tw-prose-links: var(--accent);
+	--tw-prose-bold: rgb(var(--black));
+	--tw-prose-counters: rgb(var(--gray));
+	--tw-prose-bullets: rgb(var(--gray));
+	--tw-prose-hr: rgb(var(--gray-light));
+	--tw-prose-quotes: rgb(var(--gray-dark));
+	--tw-prose-quote-borders: var(--accent);
+	--tw-prose-captions: rgb(var(--gray));
+	--tw-prose-kbd: rgb(var(--black));
+	--tw-prose-code: rgb(var(--black));
+	--tw-prose-pre-code: rgb(var(--gray-light));
+	--tw-prose-pre-bg: rgb(var(--gray-light));
+	--tw-prose-th-borders: rgb(var(--gray-light));
+	--tw-prose-td-borders: rgb(var(--gray-light));
 }
 body {
 	font-family: var(--font-atkinson);
@@ -36,6 +80,7 @@ body {
 	text-align: left;
 	background: linear-gradient(var(--gray-gradient)) no-repeat;
 	background-size: 100% 600px;
+	background-color: var(--bg);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
@@ -108,6 +153,11 @@ code {
 	padding: 2px 5px;
 	background-color: rgb(var(--gray-light));
 	border-radius: 2px;
+}
+/* Tailwind Typography wraps inline code in literal backticks — suppress them. */
+.prose code::before,
+.prose code::after {
+	content: none;
 }
 pre {
 	padding: 1.5em;

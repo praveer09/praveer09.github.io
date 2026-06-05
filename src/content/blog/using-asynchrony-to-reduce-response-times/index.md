@@ -20,7 +20,7 @@ The content in this article is organized as below:
 
 - [Why do we need asynchronous programs](#why-do-we-need-asynchronous-programs)
 - [Designing asynchronous interfaces](#designing-asynchronous-interfaces)
-- [CompletableFuture Recipes](#completableFuture-recipes)
+- [CompletableFuture Recipes](#completablefuture-recipes)
   - [Recipes for an implementor of an asynchronous interface](#recipes-for-an-implementor-of-an-asynchronous-interface)
   - [Recipes for a client using the asynchronous interface](#recipes-for-a-client-using-the-asynchronous-interface)
 - [Summary](#summary)

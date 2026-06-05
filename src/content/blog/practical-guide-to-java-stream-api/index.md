@@ -94,7 +94,7 @@ This is what we refer as a **_stream pipeline_**. The stream pipeline made of th
 Let's now look at the basic operations that we can do using Stream. Though we will be learning about the operations
 applied individually on Stream, you can always mix and match them to derive different results.
 
-# Transforming {#transforming}
+# Transforming
 
 Transforming means converting the type of value that is stored in each element of a collection. Let's say we want to
 derive a collection of names of people from the person collection. In such a case we have to use a transformation
@@ -111,7 +111,7 @@ List<String> namesOfPeople = people.stream()
 }
 ```
 
-# Filtering {#filtering}
+# Filtering
 
 As the word suggests, filtering operations allow objects to flow through itself only if the object fulfills the
 conditions laid upon by a [Predicate][predicate]. The filter operator is composed with the `Predicate` before it is
@@ -136,7 +136,7 @@ List<Person> smallerListOfPeople = people.stream()
     .collect(Collectors.toList());
 ```
 
-# Searching {#searching}
+# Searching
 
 Again as the word suggests, searching on a collection means to search for an element or the existence of an element
 based on a criteria, which again is represented as a `Predicate`. Searching for an element may or may not return a
@@ -156,7 +156,7 @@ boolean isAnyOneInGroupLessThan20Years = people.stream()
     .anyMatch(person -> person.getAge() < 20);
 ```
 
-# Reordering {#reordering}
+# Reordering
 
 If you want to order the elements in a collection, you can use the `sorted` intermediate operator. It takes an
 instance of a `Comparator` interface. To create the instance I have used the `comparing` factory method on `Comparator`.
@@ -174,7 +174,7 @@ List<Person> peopleSortedEldestToYoungest = people.stream()
 > have to see all the elements in the stream before the result of sorting can be provided to further intermediate or
 > terminal operator. Another example of such an operator is `distinct`.
 
-# Summarizing {#summarizing}
+# Summarizing
 
 Sometimes you want to derive information from a collection. As an example, deriving the sum of ages of all the people.
 In `Stream` API, this is achieved using **_terminal operators_**. `reduce` and `collect` are the generic terminal
@@ -213,7 +213,7 @@ ageStatistics.getSum();
 > whereas `collect` is meant for mutable reduction. Immutable reduction is the preferred approach. However for
 > situations where performance is important, mutable reduction is preferred instead of immutable.
 
-# Grouping {#grouping}
+# Grouping
 
 Grouping can also be called classifying. Sometimes we want to break a collection into several groups. The resulting
 data structure in such a case is a `Map` where the key represents the grouping factor and the value represents the

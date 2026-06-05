@@ -79,9 +79,11 @@ jobs:
           # --offline checks only internal/local links (deterministic, no
           # network). External link-rot on archival posts would otherwise create
           # permanent noise; --root-dir (absolute) resolves root-relative links
-          # (e.g. /blog/) against the built site root.
+          # (e.g. /blog/) against the built site root. --include-fragments also
+          # verifies in-page #anchor targets (e.g. table-of-contents links).
           args: >-
-            --no-progress --offline --root-dir ${{ github.workspace }}/dist
+            --no-progress --offline --include-fragments
+            --root-dir ${{ github.workspace }}/dist
             'dist/**/*.html'
           fail: true
         env:
