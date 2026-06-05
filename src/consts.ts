@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 // While the IDs start with "REPLACE", the Comments island renders nothing.
 export const GISCUS = {
 	repo: 'praveer09/praveer09.github.io',
-	repoId: 'REPLACE_WITH_REPO_ID',
-	category: 'REPLACE_WITH_CATEGORY',
-	categoryId: 'REPLACE_WITH_CATEGORY_ID',
+	repoId: 'MDEwOlJlcG9zaXRvcnkyMDE4ODk1MA==',
+	category: 'Announcements',
+	categoryId: 'DIC_kwDOATQPFs4C-kIG',
 };
