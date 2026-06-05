@@ -15,11 +15,6 @@ public/sitemap.xml
 # dependencies
 node_modules/
 
-# beoe diagram cache: commit the SQLite file (so Cloudflare can build mermaid
-# diagrams without a browser) but never the transient WAL/SHM sidecars.
-.beoe/*.sqlite-wal
-.beoe/*.sqlite-shm
-
 # logs
 npm-debug.log*
 yarn-debug.log*

@@ -30,7 +30,6 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.9",
-		"@beoe/cache": "^0.1.1",
 		"@beoe/rehype-mermaid": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.3.0",

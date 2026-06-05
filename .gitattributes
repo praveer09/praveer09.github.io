@@ -1,15 +1,9 @@
 # Define standard eol format
 
-# Binary diagram cache (committed so Cloudflare can build mermaid without a
-# browser); must never be EOL-converted or it corrupts.
-*.sqlite binary
-
-# Dependency patches (pnpm) — keep LF so they apply identically on every OS.
-*.patch text eol=lf
-
 # Web Files
 *.html text eol=lf
 *.md text eol=lf
+*.mdx text eol=lf
 *.css text eol=lf
 *.js text eol=lf
 

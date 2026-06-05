@@ -1,17 +1,14 @@
 // Guards against the "diagram silently failed to render" failure mode.
 //
 // Mermaid diagrams are rendered to SVG at build time by @beoe/rehype-mermaid,
-// which needs a headless browser. To let Cloudflare Pages build WITHOUT a
-// browser, rendered diagrams are read from a committed SQLite cache
-// (.beoe/cache.sqlite). If that cache is missing an entry (e.g. a diagram was
-// added or edited but the refreshed cache was not committed), a browserless
-// build does not just drop the diagram — it empties the ENTIRE post body.
+// which needs a headless browser (Chromium). If the browser is missing or a
+// render fails, a build can drop the diagram — or empty the ENTIRE post body.
 //
-// This script runs in `postbuild`, so it fires locally, in CI AND on Cloudflare.
-// For every non-draft post it compares the number of ```mermaid fences in the
-// source against the number of rendered <figure class="beoe mermaid"> in the
-// built HTML, and FAILS the build loudly on any mismatch instead of shipping a
-// blank page.
+// This script runs in `postbuild`, so it fires locally and in CI (both build
+// with Chromium installed). For every non-draft post it compares the number of
+// ```mermaid fences in the source against the number of rendered
+// <figure class="beoe mermaid"> in the built HTML, and FAILS the build loudly
+// on any mismatch instead of shipping a blank page.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -57,8 +54,8 @@ for (const slug of readdirSync(blogDir, { withFileTypes: true })
 	if (rendered !== expected) {
 		errors.push(
 			`Post "${slug}": expected ${expected} rendered diagram(s) but found ${rendered} ` +
-				`<figure class="beoe mermaid"> in dist. The diagram cache (.beoe/cache.sqlite) ` +
-				`is likely stale or incomplete — rebuild locally with a browser and commit it.`,
+				`<figure class="beoe mermaid"> in dist — the Mermaid render likely failed ` +
+				`(check that headless Chromium is installed for the build).`,
 		);
 		continue;
 	}
@@ -86,5 +83,5 @@ if (errors.length > 0) {
 }
 
 console.log(
-	`Diagram validation OK: ${totalDiagrams} diagram(s) across ${postsWithDiagrams} post(s) rendered from cache.`,
+	`Diagram validation OK: ${totalDiagrams} diagram(s) across ${postsWithDiagrams} post(s) rendered.`,
 );
