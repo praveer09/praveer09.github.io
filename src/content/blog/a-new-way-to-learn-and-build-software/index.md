@@ -2,7 +2,7 @@
 title: 'A new way to learn and build software'
 description: 'A mail from Medium pushed me to rebuild my blog from scratch. Doing it with GitHub Copilot CLI showed me a new way to learn and build software: bring the judgment, let the tool bring the speed.'
 pubDate: '2026-06-05'
-tags: [ai, web, meta]
+tags: [ai, learning, web]
 ---
 
 It started with an email. Medium wanted me to migrate the custom domain of my publication to their new
