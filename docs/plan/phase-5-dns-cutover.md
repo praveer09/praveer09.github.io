@@ -28,6 +28,19 @@ registrar — **especially email records** (`MX`, plus `SPF`/`DKIM`/`DMARC` `TXT
 
 Commit `migration/dns-backup-praveergupta-in.txt`.
 
+> 🤖 **CLI-prepared (this session):** ran `scripts/audit-dns.ps1 -Domain praveergupta.in`,
+> output committed to `migration/dns-backup-praveergupta-in.txt`. **Findings:**
+> - **Registrar = GoDaddy** (nameservers `ns63/ns64.domaincontrol.com`). The nameserver
+>   change in 5.1 happens in the **GoDaddy** DNS dashboard.
+> - Apex `A` records point to Medium's AWS IPs (`52.x.x.x`) — these get replaced by the
+>   Pages custom-domain records in 5.3.
+> - **⚠️ ACTIVE EMAIL — re-create before switching nameservers:** `MX 10
+>   mailstore1.secureserver.net` and `MX 0 smtp.secureserver.net` (GoDaddy email). If these
+>   aren't re-created in Cloudflare, **mail to/from praveergupta.in breaks silently.**
+> - Apex `TXT` has a `google-site-verification` token (re-create it so Search Console stays
+>   verified). **No SPF and no DMARC** were found publicly — verify in the GoDaddy zone
+>   editor; if GoDaddy email uses an SPF/DKIM, copy it across too.
+
 ---
 
 ## 5.1 — 🧑‍💻 Add the domain to Cloudflare and re-create records
@@ -107,6 +120,26 @@ page** behaves:
 > It's a meta-refresh (not a 301), but combined with the `canonical` tag it preserves the user
 > journey and consolidates SEO on `praveergupta.in`. You accepted brief github.io downtime, so
 > a gap here before this workflow runs is fine.
+
+> 🤖 **CLI-prepared (this session):** `.github/workflows/deploy-pages.yml` is written (Option A:
+> builds Astro with pnpm from `.nvmrc`, `--frozen-lockfile`, uploads `dist` via
+> `actions/upload-pages-artifact` → `actions/deploy-pages`). **It is committed on branch
+> `phase-5-dns-cutover` but deliberately NOT merged yet.** Three things to know:
+>
+> 1. **The workflow alone does NOT stop the Jekyll emails.** You MUST switch the source in
+>    **Settings → Pages → Build and deployment → Source → GitHub Actions**. That switch is what
+>    disables the failing legacy `pages-build-deployment`.
+> 2. **Do not merge this branch until the source is switched.** `actions/deploy-pages` fails if
+>    the Pages source is still "Deploy from a branch" — merging early just adds a *second*
+>    failure email. Recommended order: cut over DNS (5.1–5.4) → switch source to GitHub Actions
+>    → merge `phase-5-dns-cutover` to master (the push runs the workflow and deploys). Do the
+>    last two back-to-back to minimise the github.io gap.
+> 3. **Known accepted limitation:** on github.io, `/feed.xml` and `/sitemap.xml` will 404
+>    (no meta-refresh stub is generated for `.xml` paths — a meta-refresh can't live in an XML
+>    file — and Cloudflare's `_redirects` is ignored by GitHub Pages). This only affects the
+>    *github.io* host; on the canonical `praveergupta.in` both 301 correctly via `_redirects`.
+>    Per-page `canonical` tags consolidate SEO regardless, so this is within the "best-effort
+>    redirector" envelope.
 
 > ℹ️ If `praveer09.github.io` itself was previously mapped to a custom domain via a `CNAME`
 > file in the repo, make sure that file is gone (it moved to `_legacy-jekyll/` in Phase 1) so

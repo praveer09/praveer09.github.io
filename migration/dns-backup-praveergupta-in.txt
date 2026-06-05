@@ -1,0 +1,53 @@
+DNS backup for praveergupta.in
+Captured: 2026-06-05 08:42:18 +05:30 (public resolver view)
+Tool: Resolve-DnsName on DEVBOX-CPC-PRAV
+========================================================================
+
+### NS
+  ns63.domaincontrol.com
+  ns64.domaincontrol.com
+
+### A
+  52.0.16.118
+  52.1.119.170
+  52.1.147.205
+  52.1.173.203
+  52.4.145.119
+  52.4.175.111
+  52.4.225.124
+  52.4.240.221
+  52.4.38.70
+  52.5.181.79
+  52.6.3.192
+  52.6.46.142
+
+### AAAA
+  (none)
+
+### CNAME
+  (none)
+
+### MX
+  10	mailstore1.secureserver.net
+  0	smtp.secureserver.net
+
+### CAA
+  (none)
+
+### TXT (apex)
+  google-site-verification=0fv3dDSHmauRUTyou0Lq9o6UqzgK22-jD6rsnFW3bc0
+
+### TXT (_dmarc)
+  (none)
+
+### TXT (DKIM selectors probed)
+  (no DKIM found for the probed selectors; check your mail provider for the real selector)
+
+========================================================================
+### ⚠️ EMAIL RECORDS TO RE-CREATE IN CLOUDFLARE BEFORE/DURING CUTOVER
+  - MX: pref 10 -> mailstore1.secureserver.net
+  - MX: pref 0 -> smtp.secureserver.net
+
+Reminder: Resolve-DnsName only sees published records. Cross-check the full zone in
+your registrar/Medium DNS editor and re-create EVERYTHING (especially MX/SPF/DKIM/
+DMARC) in Cloudflare BEFORE switching nameservers.
