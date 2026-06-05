@@ -49,6 +49,30 @@ html[data-theme='dark'] {
 	--surface: #161922;
 	color-scheme: dark;
 }
+/*
+  The post body wrapper carries Tailwind Typography's `prose` class, whose color
+  tokens default to dark-on-light. In dark mode re-point them to the site's dark
+  palette so bold text, blockquotes, links, headings and borders stay legible.
+*/
+html[data-theme='dark'] .prose {
+	--tw-prose-body: rgb(var(--gray-dark));
+	--tw-prose-headings: rgb(var(--black));
+	--tw-prose-lead: rgb(var(--gray-dark));
+	--tw-prose-links: var(--accent);
+	--tw-prose-bold: rgb(var(--black));
+	--tw-prose-counters: rgb(var(--gray));
+	--tw-prose-bullets: rgb(var(--gray));
+	--tw-prose-hr: rgb(var(--gray-light));
+	--tw-prose-quotes: rgb(var(--gray-dark));
+	--tw-prose-quote-borders: var(--accent);
+	--tw-prose-captions: rgb(var(--gray));
+	--tw-prose-kbd: rgb(var(--black));
+	--tw-prose-code: rgb(var(--black));
+	--tw-prose-pre-code: rgb(var(--gray-light));
+	--tw-prose-pre-bg: rgb(var(--gray-light));
+	--tw-prose-th-borders: rgb(var(--gray-light));
+	--tw-prose-td-borders: rgb(var(--gray-light));
+}
 body {
 	font-family: var(--font-atkinson);
 	margin: 0;
