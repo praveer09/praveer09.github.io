@@ -176,6 +176,28 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+/*
+  Mermaid diagrams render to a static inline SVG at build time and are wrapped in
+  <figure class="mermaid-figure"> by a local rehype plugin. They sit on an
+  intentional light "canvas" card in BOTH themes (the diagram is themed once at
+  build, so it cannot follow the runtime data-theme toggle) — this keeps the
+  diagram legible and looking deliberate in dark mode rather than half-inverted.
+*/
+.mermaid-figure {
+	margin: 2em 0;
+	padding: 1.25rem;
+	background-color: #ffffff;
+	border: 1px solid rgb(229, 233, 240);
+	border-radius: 8px;
+	overflow-x: auto;
+	text-align: center;
+}
+.mermaid-figure svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
 @media (max-width: 720px) {
 	body {
 		font-size: 18px;

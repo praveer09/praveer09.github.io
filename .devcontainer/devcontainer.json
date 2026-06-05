@@ -4,7 +4,7 @@
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {}
 	},
-	"postCreateCommand": "corepack enable && pnpm install --frozen-lockfile",
+	"postCreateCommand": "corepack enable && pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium",
 	"forwardPorts": [4321],
 	"portsAttributes": {
 		"4321": {

@@ -4,6 +4,8 @@
 # master. The build's `postbuild` step runs `scripts/verify-redirects.mjs`, so
 # redirect/stub integrity is ALREADY enforced as a blocking gate here — there is
 # no separate non-blocking redirect job (that would just duplicate this check).
+# The build renders ```mermaid blocks to static SVG via rehype-mermaid, which
+# needs headless Chromium — installed (and cached) before the build below.
 #
 # `link-check` (non-blocking) downloads the built `dist/` from `verify` and runs
 # lychee over it to catch broken links inside post content — something the
@@ -49,6 +51,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Install Playwright Chromium (for build-time Mermaid rendering)
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: Lint
         run: pnpm run lint
