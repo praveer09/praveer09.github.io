@@ -1,0 +1,15 @@
+{
+	"ci": {
+		"collect": {
+			"staticDistDir": "./dist",
+			"numberOfRuns": 3,
+			"url": [
+				"http://localhost/index.html",
+				"http://localhost/blog/index.html",
+				"http://localhost/blog/practical-guide-to-java-stream-api/index.html",
+				"http://localhost/tags/index.html",
+				"http://localhost/about/index.html"
+			]
+		}
+	}
+}
