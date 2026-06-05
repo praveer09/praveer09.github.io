@@ -5,14 +5,10 @@
 # `scripts/verify-diagrams.mjs`, so redirect/stub integrity AND diagram-render
 # completeness are enforced as blocking gates here.
 #
-# IMPORTANT: this build runs BROWSERLESS (PLAYWRIGHT_BROWSERS_PATH points at a
-# non-existent dir) on purpose, to mirror Cloudflare Pages — which builds the
-# site WITHOUT a headless browser. Mermaid diagrams must therefore come from the
-# committed cache (.beoe/cache.sqlite). If a diagram was added/edited without
-# committing a refreshed cache, the browserless render empties that post's body
-# and `verify-diagrams` fails the job — catching the regression before it can
-# silently ship an empty page on Cloudflare. (Refresh the cache locally, where
-# the devcontainer provides Chromium, then commit it.)
+# The build renders ```mermaid blocks to static SVG via rehype-mermaid, which
+# needs headless Chromium — installed (and cached) before the build below.
+# `verify-diagrams` then asserts every diagram actually rendered, so a Mermaid
+# regression fails the job before the artifact is deployed.
 #
 # `link-check` (non-blocking) downloads the built `dist/` from `verify` and runs
 # lychee over it to catch broken links inside post content — something the
@@ -27,7 +23,7 @@
 # `deploy` (build once, deploy many) uploads the SAME `dist/` artifact that
 # `verify` built+validated straight to Cloudflare Pages via Direct Upload
 # (wrangler), so Cloudflare serves exactly the bytes we tested instead of
-# rebuilding from source in a browserless environment. Push to master ->
+# rebuilding from source. Push to master ->
 # production; pull requests -> a Cloudflare preview deployment. Requires repo
 # secrets CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID, and Cloudflare's own
 # Git-integration build must be turned OFF to avoid double deploys.
@@ -67,18 +63,23 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Install Playwright Chromium (for build-time Mermaid rendering)
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Lint
         run: pnpm run lint
 
       - name: Typecheck
         run: pnpm run typecheck
 
-      - name: Build (browserless — mirrors Cloudflare; diagrams come from the committed cache)
+      - name: Build
         run: pnpm run build
-        env:
-          # Force a browserless build so verify-diagrams proves the committed
-          # .beoe cache is complete (exactly how Cloudflare Pages builds).
-          PLAYWRIGHT_BROWSERS_PATH: /nonexistent-ci-browserless
 
       - name: Upload built site
         uses: actions/upload-artifact@v7

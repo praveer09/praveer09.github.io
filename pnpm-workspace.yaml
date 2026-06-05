@@ -1,14 +1,9 @@
 onlyBuiltDependencies:
-  - better-sqlite3
   - esbuild
   - sharp
 minimumReleaseAgeExclude:
   - '@astrojs/mdx@6.0.2'
   - astro@6.4.4
 allowBuilds:
-  better-sqlite3: true
   esbuild: true
   sharp: true
-patchedDependencies:
-  '@beoe/rehype-code-hook-img@0.4.1': patches/@beoe__rehype-code-hook-img@0.4.1.patch
-  '@beoe/rehype-code-hook@0.1.1': patches/@beoe__rehype-code-hook@0.1.1.patch
