@@ -9,6 +9,11 @@
 # lychee over it to catch broken links inside post content — something the
 # redirect validator never inspects. It is `continue-on-error`, so a flaky
 # external link reports a red job for awareness without blocking the PR.
+#
+# `lighthouse` (non-blocking) runs Lighthouse against the built `dist/` (served
+# locally by the action) and surfaces performance/a11y/SEO/best-practices scores
+# plus a shareable report URL. No thresholds are asserted yet — it is purely for
+# learning the budgets, so it is `continue-on-error` too.
 
 name: CI
 
@@ -88,3 +93,29 @@ jobs:
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lighthouse:
+    name: Lighthouse (non-blocking)
+    needs: verify
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        # brings lighthouserc.json into the workspace (dist is gitignored)
+
+      - name: Download built site
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist
+
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          # collect config (staticDistDir + URLs + runs) lives in lighthouserc.json
+          configPath: ./lighthouserc.json
+          # publish each report to temporary public storage and print its URL
+          temporaryPublicStorage: true
+          # also keep the raw results as a downloadable workflow artifact
+          uploadArtifacts: true
