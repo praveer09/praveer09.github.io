@@ -149,14 +149,20 @@ page** behaves:
 
 ## Definition of Done
 
-- [ ] `migration/dns-backup-praveergupta-in.txt` committed; email records re-created in
-      Cloudflare.
-- [ ] `praveergupta.in` is **Active** on Cloudflare; nameservers switched at the registrar.
-- [ ] Domain disconnected in Medium's settings; stale Medium records removed.
-- [ ] Apex **and** `www` added as Pages custom domains; `www` → apex redirect set.
-- [ ] **SSL certificate issued**; `https://praveergupta.in` serves the new site.
-- [ ] 5.4 redirect checks pass against the real domain (301s + correct `Location`).
-- [ ] GitHub Pages workflow deploys `dist`; a sample old github.io deep link reaches the right
-      new post via its stub.
+- [x] `migration/dns-backup-praveergupta-in.txt` committed. Email records: **N/A — the owner
+      confirmed no email is used on `praveergupta.in`**, so the GoDaddy `MX`/`email`/`ftp`
+      records were dropped (only the `google-site-verification` TXT was kept).
+- [x] `praveergupta.in` is **Active** on Cloudflare; nameservers switched at GoDaddy
+      (`anahi/henry.ns.cloudflare.com`). Medium `A` records (`52.x.x.x`) removed.
+- [x] Domain disconnected from Medium at the DNS layer (A records removed + nameservers moved).
+- [x] Apex **and** `www` added as Pages custom domains; `www → apex` 301 redirect rule deployed
+      (Dynamic `concat("https://praveergupta.in", http.request.uri.path)`, preserves path/query;
+      also resolved a transient `522` on `www`).
+- [x] **SSL issued**; `https://praveergupta.in` serves the new site (apex resolves to Cloudflare
+      `172.67.173.99` / `104.21.63.248`).
+- [x] 5.4 redirect checks pass against the real domain: 14/14 via
+      `scripts/test-redirects.ps1 -BaseUrl https://praveergupta.in`, plus `www → apex` 301.
+- [x] GitHub Pages source switched to **GitHub Actions** (stops the legacy Jekyll builds);
+      `.github/workflows/deploy-pages.yml` deploys `dist`, including the old-path redirect stubs.
 
 ➡️ Next: [Phase 6 — Verify & go live](./phase-6-verify-golive.md)
