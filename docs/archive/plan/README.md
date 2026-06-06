@@ -1,5 +1,10 @@
 # Migration & rebuild plan — Praveer's Musings
 
+> **📦 Archived / historical (completed).** The migration described here shipped in
+> 2026: the blog now runs on Astro + Cloudflare Pages at https://praveergupta.in.
+> These phase files are kept as a record of *how* and *why* it was built. For the
+> current architecture and day-to-day operations, see [`docs/README.md`](../../README.md).
+
 This folder is your **executable, step-by-step plan** to rebuild this blog the modern way
 and migrate every existing URL without losing traffic. It is split into phases so you can
 do one sitting at a time, driving most of the work through the **GitHub Copilot CLI**.
