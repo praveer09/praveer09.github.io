@@ -38,32 +38,12 @@ lives, what the build does, how it ships, where it is served, and what reaches t
 flowchart TB
   accTitle: The full stack, end to end
   accDescr: The end-to-end toolchain in six stages. Authoring is Markdown, MDX and Mermaid. Source and tooling is Git on GitHub with pnpm, Node and Dependabot. The build, run by GitHub Actions, uses Astro with TypeScript and Tailwind, sharp for images and Playwright-driven Chromium to render Mermaid to SVG, gated by ESLint, Prettier, astro check, redirect and diagram verifiers, lychee and Lighthouse. Deployment is wrangler Direct Upload. Serving is Cloudflare Pages at the edge with a GitHub Pages mirror. Reaching the reader are giscus comments and cookieless Cloudflare Web Analytics in the page, plus RSS and sitemap feeds.
-  subgraph A["1 · Authoring"]
-    A1["Markdown + MDX<br/>(posts as files)"]
-    A2["Mermaid<br/>(diagrams as text)"]
-  end
-  subgraph B["2 · Source & tooling"]
-    B1["Git + GitHub"]
-    B2["pnpm · Node 22"]
-    B3["Dependabot<br/>(dependency PRs)"]
-  end
-  subgraph C["3 · Build — GitHub Actions"]
-    C1["Astro 6 · TypeScript<br/>Tailwind 4 · sharp"]
-    C2["Mermaid → SVG<br/>(Playwright · Chromium)"]
-    C3["Gates: ESLint · Prettier · astro check<br/>verify-redirects · verify-diagrams<br/>lychee · Lighthouse"]
-  end
-  subgraph D["4 · Deploy"]
-    D1["wrangler<br/>Direct Upload"]
-  end
-  subgraph E["5 · Serve"]
-    E1["Cloudflare Pages<br/>(edge · praveergupta.in)"]
-    E2["GitHub Pages<br/>(mirror)"]
-  end
-  subgraph F["6 · Reaches the reader"]
-    F1["giscus<br/>(comments)"]
-    F2["Cloudflare Web Analytics<br/>(cookieless)"]
-    F3["RSS · sitemap<br/>(feeds)"]
-  end
+  A["<b>1 · Authoring</b><br/>Markdown · MDX<br/>Mermaid"]
+  B["<b>2 · Source &amp; tooling</b><br/>Git · GitHub<br/>pnpm · Node 22<br/>Dependabot"]
+  C["<b>3 · Build · GitHub Actions</b><br/>Astro · TypeScript<br/>Tailwind · sharp<br/>Mermaid → SVG<br/>(Playwright · Chromium)<br/>Gates ▸ ESLint · Prettier<br/>astro check · verify-redirects<br/>verify-diagrams · lychee · Lighthouse"]
+  D["<b>4 · Deploy</b><br/>wrangler Direct Upload"]
+  E["<b>5 · Serve</b><br/>Cloudflare Pages (edge)<br/>GitHub Pages (mirror)"]
+  F["<b>6 · Reaches the reader</b><br/>giscus comments<br/>Cloudflare Web Analytics<br/>RSS · sitemap"]
   A --> B --> C --> D --> E --> F
 ```
 
