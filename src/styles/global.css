@@ -133,7 +133,6 @@ p {
 }
 .prose p {
 	margin-bottom: 2em;
-	font-size: clamp(1em, 0.8em + 0.6vw, 1.15em);
 }
 textarea {
 	width: 100%;
