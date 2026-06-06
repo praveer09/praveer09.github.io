@@ -12,7 +12,7 @@
 		"gen:stubs": "node scripts/gen-redirect-stubs.mjs",
 		"prebuild": "node scripts/gen-redirects.mjs && node scripts/gen-redirect-stubs.mjs",
 		"build": "astro build",
-		"postbuild": "node scripts/verify-redirects.mjs && node scripts/verify-diagrams.mjs",
+		"postbuild": "node scripts/fix-mermaid-br.mjs && node scripts/verify-redirects.mjs && node scripts/verify-diagrams.mjs",
 		"verify:redirects": "node scripts/verify-redirects.mjs",
 		"verify:live": "node scripts/verify-live-redirects.mjs",
 		"preview": "astro preview",
