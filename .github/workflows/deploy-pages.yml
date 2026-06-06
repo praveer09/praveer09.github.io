@@ -8,7 +8,7 @@
 # This serves the SAME build as Cloudflare on `praveer09.github.io`, including the
 # redirect stub pages at the old `/category/date/slug/` paths. Every page emits an
 # absolute canonical to https://praveergupta.in (astro.config `site`), so the duplicated
-# home/listing pages are SEO-safe (Option A in docs/plan/phase-5-dns-cutover.md).
+# home/listing pages are SEO-safe (Option A in docs/archive/plan/phase-5-dns-cutover.md).
 
 name: Deploy to GitHub Pages
 
