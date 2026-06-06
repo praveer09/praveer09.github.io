@@ -229,10 +229,15 @@ html[data-theme='dark'] .prose {
 }
 /*
   Tailwind Typography declares the table header underline and row dividers as
-  border-bottom-WIDTH + COLOR only, relying on Preflight to set
-  `border-style: solid`. We intentionally don't load Preflight, so supply the
-  missing style here — otherwise the borders are present but invisible.
+  border-bottom on the thead / tbody tr elements, relying on Preflight for two
+  things we don't load: `table { border-collapse: collapse }` and a global
+  `border-style: solid`. Without collapse, borders on row/row-group elements
+  are not rendered at all (separated-borders model); without a style they're
+  invisible. Supply both so the table matches the Tailwind Typography demo.
 */
+.prose table {
+	border-collapse: collapse;
+}
 .prose thead,
 .prose tbody tr {
 	border-bottom-style: solid;
