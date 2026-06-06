@@ -228,6 +228,16 @@ html[data-theme='dark'] .prose {
 	font-size: 1.333em;
 }
 /*
+  Tailwind Typography declares the table header underline and row dividers as
+  border-bottom-WIDTH + COLOR only, relying on Preflight to set
+  `border-style: solid`. We intentionally don't load Preflight, so supply the
+  missing style here — otherwise the borders are present but invisible.
+*/
+.prose thead,
+.prose tbody tr {
+	border-bottom-style: solid;
+}
+/*
   Mermaid diagrams render to a static inline SVG at build time (via
   @beoe/rehype-mermaid) and are emitted as <figure class="beoe mermaid">. They
   sit on an intentional light "canvas" card in BOTH themes (the diagram is themed
