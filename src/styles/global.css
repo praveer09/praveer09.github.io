@@ -144,6 +144,37 @@ input {
 table {
 	width: 100%;
 }
+/*
+  Decision-ledger and other markdown tables: a clean, editorial look —
+  bold headers over a stronger underline, light dividers between rows,
+  roomy cells, and no vertical borders or fills (matches the way the
+  table reads in a Markdown editor). Colors use the theme tokens, so it
+  inverts with the dark-mode toggle automatically.
+*/
+.prose table {
+	border-collapse: collapse;
+	margin: 2em 0;
+	line-height: 1.5;
+}
+.prose thead th {
+	text-align: left;
+	font-weight: 700;
+	padding: 0.5em 1.25em 0.65em;
+	border-bottom: 2px solid rgba(var(--gray), 0.55);
+}
+.prose tbody td {
+	padding: 0.9em 1.25em;
+	border-bottom: 1px solid rgb(var(--gray-light));
+	vertical-align: top;
+}
+.prose th:first-child,
+.prose td:first-child {
+	padding-left: 0;
+}
+.prose th:last-child,
+.prose td:last-child {
+	padding-right: 0;
+}
 img {
 	max-width: 100%;
 	height: auto;
