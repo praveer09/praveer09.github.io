@@ -38,13 +38,25 @@ lives, what the build does, how it ships, where it is served, and what reaches t
 flowchart TB
   accTitle: The full stack, end to end
   accDescr: The end-to-end toolchain in six stages. Authoring is Markdown, MDX and Mermaid. Source and tooling is Git on GitHub with pnpm, Node and Dependabot. The build, run by GitHub Actions, uses Astro with TypeScript and Tailwind, sharp for images and Playwright-driven Chromium to render Mermaid to SVG, gated by ESLint, Prettier, astro check, redirect and diagram verifiers, lychee and Lighthouse. Deployment is wrangler Direct Upload. Serving is Cloudflare Pages at the edge with a GitHub Pages mirror. Reaching the reader are giscus comments and cookieless Cloudflare Web Analytics in the page, plus RSS and sitemap feeds.
-  A["<b>1 · Authoring</b><br/>Markdown · MDX<br/>Mermaid"]
-  B["<b>2 · Source &amp; tooling</b><br/>Git · GitHub<br/>pnpm · Node 22<br/>Dependabot"]
-  C["<b>3 · Build · GitHub Actions</b><br/>Astro · TypeScript<br/>Tailwind · sharp<br/>Mermaid → SVG<br/>(Playwright · Chromium)<br/>Gates ▸ ESLint · Prettier<br/>astro check · verify-redirects<br/>verify-diagrams · lychee · Lighthouse"]
-  D["<b>4 · Deploy</b><br/>wrangler Direct Upload"]
-  E["<b>5 · Serve</b><br/>Cloudflare Pages (edge)<br/>GitHub Pages (mirror)"]
-  F["<b>6 · Reaches the reader</b><br/>giscus comments<br/>Cloudflare Web Analytics<br/>RSS · sitemap"]
-  A --> B --> C --> D --> E --> F
+  subgraph r1[" "]
+    direction LR
+    A["<b>1 · Authoring</b><br/>Markdown · MDX<br/>Mermaid"]
+    B["<b>2 · Source &amp; tooling</b><br/>Git · GitHub<br/>pnpm · Node 22<br/>Dependabot"]
+    A --> B
+  end
+  subgraph r2[" "]
+    direction LR
+    C["<b>3 · Build · GitHub Actions</b><br/>Astro · TypeScript<br/>Tailwind · sharp<br/>Mermaid → SVG<br/>(Playwright · Chromium)<br/>Gates ▸ ESLint · Prettier<br/>astro check · verify-redirects<br/>verify-diagrams · lychee · Lighthouse"]
+    D["<b>4 · Deploy</b><br/>wrangler Direct Upload"]
+    C --> D
+  end
+  subgraph r3[" "]
+    direction LR
+    E["<b>5 · Serve</b><br/>Cloudflare Pages (edge)<br/>GitHub Pages (mirror)"]
+    F["<b>6 · Reaches the reader</b><br/>giscus comments<br/>Cloudflare Web Analytics<br/>RSS · sitemap"]
+    E --> F
+  end
+  r1 --> r2 --> r3
 ```
 
 With the map in hand, the rest of the post zooms into the four decisions that gave it this shape.
