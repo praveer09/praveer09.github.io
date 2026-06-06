@@ -1,5 +1,10 @@
 # Research & decision record
 
+> **📦 Archived / historical (completed).** This research fed the migration that shipped
+> in 2026: the blog now runs on Astro + Cloudflare Pages at https://praveergupta.in.
+> These documents are kept as the record of *why* those choices were made. For the
+> current architecture and day-to-day operations, see [`docs/README.md`](../../README.md).
+
 These documents capture the research and reasoning behind the modernization of this
 blog. They are preserved here for future reference — read them when you want the *why*
 behind a decision in the implementation plan (`../plan/`).

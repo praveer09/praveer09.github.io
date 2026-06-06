@@ -5,7 +5,7 @@ layout, how to add a post, how it deploys, and the gotchas worth remembering.
 
 > If you want the *story* of the migration (why these choices were made), see the
 > archived plan in [`archive/plan/`](./archive/plan/README.md) and the research in
-> [`research/`](./research/README.md). The public write-up is the post
+> [`archive/research/`](./archive/research/README.md). The public write-up is the post
 > _"Build once, deploy many: the anatomy of this blog"_.
 
 ---
@@ -42,7 +42,7 @@ src/
 
 scripts/               build-time helpers (see "Redirects" + "Scripts" below)
 .github/workflows/     ci.yml (build + gates + Cloudflare deploy), deploy-pages.yml (GH Pages mirror)
-docs/                  this reference, research/, archive/plan/
+docs/                  this reference, archive/plan/, archive/research/
 astro.config.mjs       site, integrations (mdx, sitemap), Mermaid rehype, fonts
 ```
 
@@ -161,4 +161,4 @@ something looks "missing" or "off."
 ## Pointers
 
 - Archived migration plan: [`archive/plan/`](./archive/plan/README.md)
-- Research (assessment + greenfield blueprint): [`research/`](./research/README.md)
+- Research (assessment + greenfield blueprint): [`archive/research/`](./archive/research/README.md)
