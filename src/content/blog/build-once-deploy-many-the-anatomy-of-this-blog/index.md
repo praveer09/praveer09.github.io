@@ -30,8 +30,44 @@ flowchart LR
   D --> F["📖 Reader<br/>(served nearby)"]
 ```
 
-Keep that picture in mind. The rest of this post zooms into the four decisions that give it its
-shape.
+Keep that picture in mind — it is the skeleton. Here is the same journey with every actual tool named,
+so the rest of the post has a map to point at. It groups into six stages: how I write, where the source
+lives, what the build does, how it ships, where it is served, and what reaches the reader.
+
+```mermaid
+flowchart TB
+  accTitle: The full stack, end to end
+  accDescr: The end-to-end toolchain in six stages. Authoring is Markdown, MDX and Mermaid. Source and tooling is Git on GitHub with pnpm, Node and Dependabot. The build, run by GitHub Actions, uses Astro with TypeScript and Tailwind, sharp for images and Playwright-driven Chromium to render Mermaid to SVG, gated by ESLint, Prettier, astro check, redirect and diagram verifiers, lychee and Lighthouse. Deployment is wrangler Direct Upload. Serving is Cloudflare Pages at the edge with a GitHub Pages mirror. Reaching the reader are giscus comments and cookieless Cloudflare Web Analytics in the page, plus RSS and sitemap feeds.
+  subgraph A["1 · Authoring"]
+    A1["Markdown + MDX<br/>(posts as files)"]
+    A2["Mermaid<br/>(diagrams as text)"]
+  end
+  subgraph B["2 · Source & tooling"]
+    B1["Git + GitHub"]
+    B2["pnpm · Node 22"]
+    B3["Dependabot<br/>(dependency PRs)"]
+  end
+  subgraph C["3 · Build — GitHub Actions"]
+    C1["Astro 6 · TypeScript<br/>Tailwind 4 · sharp"]
+    C2["Mermaid → SVG<br/>(Playwright · Chromium)"]
+    C3["Gates: ESLint · Prettier · astro check<br/>verify-redirects · verify-diagrams<br/>lychee · Lighthouse"]
+  end
+  subgraph D["4 · Deploy"]
+    D1["wrangler<br/>Direct Upload"]
+  end
+  subgraph E["5 · Serve"]
+    E1["Cloudflare Pages<br/>(edge · praveergupta.in)"]
+    E2["GitHub Pages<br/>(mirror)"]
+  end
+  subgraph F["6 · Reaches the reader"]
+    F1["giscus<br/>(comments)"]
+    F2["Cloudflare Web Analytics<br/>(cookieless)"]
+    F3["RSS · sitemap<br/>(feeds)"]
+  end
+  A --> B --> C --> D --> E --> F
+```
+
+With the map in hand, the rest of the post zooms into the four decisions that gave it this shape.
 
 ## Decision 1: a static site
 
@@ -53,13 +89,17 @@ an app with per-user state it would not be.
 Plenty of tools turn Markdown into a static site. I chose **Astro** (with TypeScript, Tailwind, and
 MDX) over the Jekyll setup this blog used to run on.
 
-**Benefit.** Astro is content-first and ships **zero JavaScript by default** — a page with no
-interactive parts downloads no framework at all, which is exactly what you want for an article. When I
-_do_ need interactivity, its "islands" model lets me hydrate one component without dragging the whole
-page into a client-side app, and MDX lets that component sit right inside a post when prose alone is
-not enough. TypeScript checks my content's frontmatter against a schema, so a malformed post fails the
-build instead of shipping broken. Tailwind keeps styling local to the markup instead of sprawling
-across global stylesheets.
+**Benefit.** The win I feel every single time I sit down to write: **a post is just a Markdown (or
+MDX) file in a folder.** There is no CMS, no database, and no admin panel between me and the words —
+authoring is plain text, and maintenance is mostly _editing files_ and committing them. That keeps my
+attention on writing rather than on running a platform, and it makes the whole site easy to reason
+about and cheap to keep alive for years. Astro builds on that content-first foundation: it ships **zero
+JavaScript by default** — a page with no interactive parts downloads no framework at all, which is
+exactly what you want for an article. When I _do_ need interactivity, its "islands" model lets me
+hydrate one component without dragging the whole page into a client-side app, and MDX lets that
+component sit right inside a post when prose alone is not enough. TypeScript checks my content's
+frontmatter against a schema, so a malformed post fails the build instead of shipping broken. Tailwind
+keeps styling local to the markup instead of sprawling across global stylesheets.
 
 **Trade-off.** This is a younger, faster-moving ecosystem than the Ruby/Jekyll world it replaced. I am
 on Astro 6 and Tailwind 4 — both excellent, both still evolving — which means major versions land more
@@ -151,12 +191,12 @@ and let the noisier signals advise rather than gate.
 If you remember nothing else, remember the pattern: **every choice bought something and cost
 something.** Here is the whole post in one table.
 
-| Decision                | What it buys                                    | What it costs                                       |
-| ----------------------- | ----------------------------------------------- | --------------------------------------------------- |
-| Static site             | Speed, security, near-zero cost                 | No server-side dynamics; publishing means building  |
-| Astro generator         | Zero-JS pages, typed content, islands           | Younger, faster-moving ecosystem to keep current    |
-| Build once, deploy many | Tested bytes _are_ shipped bytes; easy rollback | A deploy step and a secret to own yourself          |
-| Self-running gates      | Lessons enforced automatically, on every change | A pipeline to maintain; blocking vs. advisory calls |
+| Decision                | What it buys                                     | What it costs                                       |
+| ----------------------- | ------------------------------------------------ | --------------------------------------------------- |
+| Static site             | Speed, security, near-zero cost                  | No server-side dynamics; publishing means building  |
+| Astro generator         | Markdown authoring, zero-JS pages, typed content | Younger, faster-moving ecosystem to keep current    |
+| Build once, deploy many | Tested bytes _are_ shipped bytes; easy rollback  | A deploy step and a secret to own yourself          |
+| Self-running gates      | Lessons enforced automatically, on every change  | A pipeline to maintain; blocking vs. advisory calls |
 
 ## What I would tell my past self
 
