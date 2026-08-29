@@ -16,7 +16,7 @@ layout, how to add a post, how it deploys, and the gotchas worth remembering.
 | --- | --- |
 | **Author** | Markdown · MDX · Mermaid (` ```mermaid ` → static SVG) |
 | **Source & tooling** | Git on GitHub · pnpm · Node (`>=22.12`, pinned in `.nvmrc`) · Dependabot |
-| **Build** (GitHub Actions) | Astro 6 · TypeScript · Tailwind v4 · `sharp` (images) · Playwright/Chromium (renders Mermaid → SVG) |
+| **Build** (GitHub Actions) | Astro 7 · TypeScript · Tailwind v4 · `sharp` (images) · Playwright/Chromium (renders Mermaid → SVG) |
 | **Quality gates** | ESLint · Prettier · `astro check` · `verify-redirects` · `verify-diagrams` · lychee (links, non-blocking) · Lighthouse (non-blocking) |
 | **Deploy** | `wrangler` Direct Upload (`cloudflare/wrangler-action`) — build once, deploy the same `dist/` |
 | **Serve** | Cloudflare Pages (edge, production at **praveergupta.in**) + GitHub Pages (mirror) |
