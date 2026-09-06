@@ -62,10 +62,15 @@ const description = `Posts tagged "${tag}".`;
 				justify-content: space-between;
 				margin-bottom: 0.6em;
 			}
-			.post-list time {
+			/* <time> is rendered by FormattedDate, so it carries no scope
+			   attribute — :global is required for these rules to apply at all.
+			   margin-left keeps the date right-aligned when a long title wraps it
+			   onto its own flex line, where space-between would left-align it. */
+			.post-list li :global(time) {
 				color: rgb(var(--gray));
 				font-size: 0.9em;
 				white-space: nowrap;
+				margin-left: auto;
 			}
 		</style>
 	</body>

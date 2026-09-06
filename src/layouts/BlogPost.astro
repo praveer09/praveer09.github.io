@@ -66,6 +66,11 @@ const jsonLd = {
 			.title h1 {
 				margin: 0 0 0.5em 0;
 			}
+			/* Without this the title rule inherits prose's 3em section-break
+			   margins; .title's own padding/margin defines the spacing. */
+			.title hr {
+				margin: 0;
+			}
 			.date {
 				margin-bottom: 0.5em;
 				color: rgb(var(--gray));
