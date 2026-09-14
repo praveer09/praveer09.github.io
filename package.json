@@ -34,14 +34,14 @@
 		"@beoe/rehype-mermaid": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.3",
-		"eslint": "^10.9.1",
+		"eslint": "^10.10.0",
 		"eslint-plugin-astro": "^3.1.0",
 		"gray-matter": "^4.0.3",
-		"playwright": "^1.62.1",
+		"playwright": "^1.63.0",
 		"prettier": "^3.9.6",
 		"prettier-plugin-astro": "^0.14.1",
 		"tailwindcss": "^4.3.3",
 		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.69.0"
+		"typescript-eslint": "^8.70.0"
 	}
 }
