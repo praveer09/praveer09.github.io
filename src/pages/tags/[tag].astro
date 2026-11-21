@@ -35,17 +35,17 @@ const description = `Posts tagged "${tag}".`;
 	<body>
 		<Header />
 		<main>
-			<p><a href="/tags/">← All tags</a></p>
+			<p>
+				<a href="/tags/">← All tags</a>
+			</p>
 			<h1>Posts tagged "{tag}"</h1>
 			<ul class="post-list">
-				{
-					posts.map((post) => (
-						<li>
-							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-							<FormattedDate date={post.data.pubDate} />
-						</li>
-					))
-				}
+				{posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						<FormattedDate date={post.data.pubDate} />
+					</li>
+				))}
 			</ul>
 		</main>
 		<Footer />

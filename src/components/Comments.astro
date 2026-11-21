@@ -14,14 +14,12 @@ const configured =
 	!GISCUS.categoryId.startsWith('REPLACE');
 ---
 
-{
-	configured && (
-		<section class="comments" aria-label="Comments">
-			<h2>Comments</h2>
-			<div id="giscus-container" />
-		</section>
-	)
-}
+{configured && (
+	<section class="comments" aria-label="Comments">
+		<h2>Comments</h2>
+		<div id="giscus-container" />
+	</section>
+)}
 
 <script define:vars={{ GISCUS }}>
 	const container = document.getElementById('giscus-container');

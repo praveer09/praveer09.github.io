@@ -34,7 +34,7 @@ const jsonLd = {
 			type="application/ld+json"
 			set:html={JSON.stringify(jsonLd)}
 			is:inline
-		/>
+		></script>
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -99,42 +99,31 @@ const jsonLd = {
 		<main>
 			<article>
 				<div class="hero-image">
-					{
-						cover && (
-							<Image
-								width={1020}
-								height={510}
-								src={cover.src}
-								alt={cover.alt}
-							/>
-						)
-					}
+					{cover && (
+						<Image width={1020} height={510} src={cover.src} alt={cover.alt} />
+					)}
 				</div>
 				<div class="prose">
 					<div class="title">
 						<div class="date">
 							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+							{updatedDate && (
+								<div class="last-updated-on">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
 						</div>
 						<h1>{title}</h1>
 						<hr />
 					</div>
 					<slot />
-					{
-						tags.length > 0 && (
-							<footer class="post-tags">
-								{tags.map((tag) => (
-									<a href={`/tags/${tag}/`}>#{tag}</a>
-								))}
-							</footer>
-						)
-					}
+					{tags.length > 0 && (
+						<footer class="post-tags">
+							{tags.map((tag) => (
+								<a href={`/tags/${tag}/`}>#{tag}</a>
+							))}
+						</footer>
+					)}
 				</div>
 			</article>
 			<Comments />

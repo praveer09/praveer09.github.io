@@ -22,22 +22,18 @@ const posts = (await getCollection('blog'))
 			<h1>{SITE_TITLE}</h1>
 			<p>
 				Notes on building, learning, and the ideas worth carrying forward.
-				Browse everything in the <a href="/blog/">archive</a> or subscribe via{
-					' '
-				}
+				Browse everything in the <a href="/blog/">archive</a> or subscribe via{' '}
 				<a href="/rss.xml">RSS</a>.
 			</p>
 
 			<h2>Posts</h2>
 			<ul class="post-list">
-				{
-					posts.map((post) => (
-						<li>
-							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-							<FormattedDate date={post.data.pubDate} />
-						</li>
-					))
-				}
+				{posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						<FormattedDate date={post.data.pubDate} />
+					</li>
+				))}
 			</ul>
 		</main>
 		<Footer />
