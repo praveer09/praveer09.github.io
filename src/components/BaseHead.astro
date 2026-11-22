@@ -84,9 +84,11 @@ const analyticsEnabled =
 {socialImageURL && <meta property="twitter:image" content={socialImageURL} />}
 
 <!-- Cloudflare Web Analytics (cookieless, privacy-first — no consent banner needed) -->
-{analyticsEnabled && <script
-	is:inline
-	defer
-	src="https://static.cloudflareinsights.com/beacon.min.js"
-	data-cf-beacon={`{"token": "${CF_ANALYTICS_TOKEN}"}`}
-></script>}
+{analyticsEnabled && (
+	<script
+		is:inline
+		defer
+		src="https://static.cloudflareinsights.com/beacon.min.js"
+		data-cf-beacon={`{"token": "${CF_ANALYTICS_TOKEN}"}`}
+	></script>
+)}
