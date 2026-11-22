@@ -30,14 +30,12 @@ const description = 'Browse posts by topic.';
 			<h1>Tags</h1>
 			<p>Browse posts by topic.</p>
 			<ul class="tag-list">
-				{
-					tags.map(([tag, count]) => (
-						<li>
-							<a href={`/tags/${tag}/`}>{tag}</a>
-							<span class="count">{count}</span>
-						</li>
-					))
-				}
+				{tags.map(([tag, count]) => (
+					<li>
+						<a href={`/tags/${tag}/`}>{tag}</a>
+						<span class="count">{count}</span>
+					</li>
+				))}
 			</ul>
 		</main>
 		<Footer />
